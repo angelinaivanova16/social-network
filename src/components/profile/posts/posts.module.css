@@ -1,0 +1,36 @@
+.title {
+  margin: 2em 0 1em 0;
+  font-size: 1.5em;
+}
+
+.postFormContent {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.postFormNews {
+  height: 80px;
+  border: none;
+  background-color: rgb(231, 224, 224);
+  margin-bottom: 20px;
+}
+.postFormNews::placeholder {
+  padding-left: 20px;
+  font-size: 20px;
+  color: gray;
+}
+
+.postFormBtn {
+  width: 100px;
+  height: 30px;
+  border: none;
+  background-color: rgb(85, 99, 208);
+  font-size: 18px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.postFormBtn:hover {
+  opacity: 0.7;
+}
