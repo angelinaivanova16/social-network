@@ -1,15 +1,19 @@
 import './reset.css'
-import './App.css';
+import classes from './App.module.css';
 import Header from './components/header/Header';
 import Navbar from './components/navbar/Navbar';
 import Profile from './components/profile/Profile';
+import Dialogs from './components/dialogs/Dialogs';
 
 const App = () => {
   return (
-    <div className="App">
+    <div className={ classes.App }>
       <Header />
       <Navbar />
-      <Profile />
+      <div className={ classes.content }>
+        {/* <Profile /> */}
+        <Dialogs />
+      </div>
     </div>
   );
 }

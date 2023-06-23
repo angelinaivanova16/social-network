@@ -3,7 +3,7 @@ import classes from './profile.module.css'
 
 const Profile = () => {
   return(
-    <main className={ classes.content }>
+    <main>
       <img className={ classes.background } src='/images/beach.jpg' alt=''/>
       <div className={ classes.about }>
         <img className={ classes.ava } src='/images/cat.jpg' alt=''/>
