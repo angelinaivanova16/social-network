@@ -11,8 +11,8 @@ const Posts = () => {
           <button className={ classes.postFormBtn } type='submit'>Send</button>
         </div>
       </form>
-      <Post message='Do not give up, the beginning is always the hardest.' likesCount='20'/>
-      <Post message='It is my first post. Never stop dreaming.' likesCount='30'/>
+      <Post postMessage='Do not give up, the beginning is always the hardest.' likesCount='20'/>
+      <Post postMessage='It is my first post. Never stop dreaming.' likesCount='30'/>
     </div>
   )
 }

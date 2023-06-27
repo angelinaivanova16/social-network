@@ -23,3 +23,7 @@
 .dialog {
   margin: 1em;
 }
+
+.messageItem {
+  padding: 10px;
+}
