@@ -8,6 +8,8 @@ const Posts = () => {
     {id: 2, message: 'It is my first post. Never stop dreaming.', likes: 30}
   ];
 
+  let postsElements = postsData.map(el => <Post postMessage={el.message} likesCount={el.likes} />)
+
   return(
     <div>
       <form>
@@ -17,8 +19,7 @@ const Posts = () => {
           <button className={ classes.postFormBtn } type='submit'>Send</button>
         </div>
       </form>
-      <Post postMessage={postsData[0].message} likesCount={postsData[0].likes} />
-      <Post postMessage={postsData[1].message} likesCount={postsData[1].likes} />
+      {postsElements}
     </div>
   )
 }
