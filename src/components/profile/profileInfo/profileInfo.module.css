@@ -6,7 +6,8 @@
 .ava {
   width: 150px;
   height: 150px;
-  padding-right: 15px;
+  margin-right: 15px;
+  border-radius: 5px;
 }
 
 .title {

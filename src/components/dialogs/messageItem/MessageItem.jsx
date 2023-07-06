@@ -1,7 +1,13 @@
 import classes from "./messageItem.module.css";
 
 const MessageItem = (props) => {
-  return <div className={classes.messageItem}>{props.message}</div>;
+  return (
+    <div
+      className={(props.id % 2 === 0 ? classes.odd : classes.even)}
+    >
+      {props.message}
+    </div>
+  );
 };
 
 export default MessageItem;

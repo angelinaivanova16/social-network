@@ -1,11 +1,12 @@
 .navigation {
   grid-area: n;
   background-color: rgb(85, 99, 208);
+  border-radius: 5px;
 }
 
 .link {
   text-decoration: none;
-  font-size: 1.5em;
+  font-size: 1.4em;
   color: #FFFFFF;
   transition: 0.3s;
 }
@@ -28,4 +29,16 @@
 
 .item {
   margin: 1em;
+}
+
+.friendsCards {
+  display: flex;
+  justify-content: space-around;
+}
+
+.title {
+  font-size: 1.8em;
+  color: #FFFFFF;
+  margin: 90px 0 15px 0;
+  text-align: center;
 }
