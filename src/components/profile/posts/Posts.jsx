@@ -1,3 +1,4 @@
+import React from 'react';
 import Post from './post/Post';
 import classes from './posts.module.css'
 
@@ -5,13 +6,19 @@ const Posts = (props) => {
 
   let postsElements = props.postsData.map(el => <Post postMessage={el.message} likesCount={el.likes} />)
 
+  let newPostElement = React.createRef();
+  let addPost = () => {
+    let text = newPostElement.current.value;
+    alert(text);
+  }
+
   return(
     <div>
       <form>
         <h2 className={ classes.title }>My posts</h2>
         <div className={ classes.postFormContent }>
-          <input className={ classes.postFormNews } type='text' placeholder='your news...' />
-          <button className={ classes.postFormBtn } type='submit'>Send</button>
+          <input className={ classes.postFormNews } type='text' placeholder='your news...' ref={newPostElement} />
+          <button className={ classes.postFormBtn } type='submit' onClick={addPost} >Send</button>
         </div>
       </form>
       {postsElements}

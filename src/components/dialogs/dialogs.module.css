@@ -2,3 +2,40 @@
   display: grid;
   grid-template-columns: 2fr 10fr;
 }
+
+.newMessage {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.newMessageText {
+  height: 80px;
+  width: 500px;
+  border: none;
+  background-color: rgb(231, 224, 224);
+  margin: 30px 0 10px 0;
+  border-radius: 10px;
+  font-size: 20px;
+  color: rgb(79, 76, 76);
+}
+.newMessageText::placeholder {
+  padding-left: 20px;
+  font-size: 20px;
+  color: gray;
+}
+
+.messageBtn {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(85, 99, 208);
+  font-size: 18px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.messageBtn:hover {
+  opacity: 0.7;
+}

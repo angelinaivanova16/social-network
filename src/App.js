@@ -15,7 +15,7 @@ const App = (props) => {
     <BrowserRouter>
       <div className={classes.App}>
         <Header />
-        <Navbar friendsData={props.state.profilePage.friendsData} />
+        <Navbar friendsData={props.state.sideBar.friendsData} />
         <div className={classes.content}>
           <Routes>
             <Route path="/" element={<Profile postsData={props.state.profilePage.postsData} />} />
