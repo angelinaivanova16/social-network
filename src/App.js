@@ -7,19 +7,18 @@ import Dialogs from "./components/dialogs/Dialogs";
 import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 const App = (props) => {
 
   return (
-    <BrowserRouter>
       <div className={classes.App}>
         <Header />
         <Navbar friendsData={props.state.sideBar.friendsData} />
         <div className={classes.content}>
           <Routes>
-            <Route path="/" element={<Profile postsData={props.state.profilePage.postsData} />} />
-            <Route path="/profile" element={<Profile postsData={props.state.profilePage.postsData} />} />
+            <Route path="/" element={<Profile postsData={props.state.profilePage.postsData} addPost={props.addPost} />} />
+            <Route path="/profile" element={<Profile postsData={props.state.profilePage.postsData} addPost={props.addPost} />} />
             <Route path="/dialogs/*" element={<Dialogs dialogsData={props.state.dialogsPage.dialogsData} messagesData={props.state.dialogsPage.messagesData} />} />
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
@@ -27,7 +26,6 @@ const App = (props) => {
           </Routes>
         </div>
       </div>
-    </BrowserRouter>
   );
 };
 

@@ -4,12 +4,14 @@ import classes from './posts.module.css'
 
 const Posts = (props) => {
 
-  let postsElements = props.postsData.map(el => <Post postMessage={el.message} likesCount={el.likes} />)
+  let postsElements = props.postsData.map(el => <Post ava={el.ava} postMessage={el.message} likesCount={el.likes} />)
 
   let newPostElement = React.createRef();
-  let addPost = () => {
+  let addPost = (e) => {
     let text = newPostElement.current.value;
-    alert(text);
+    props.addPost(text);
+    newPostElement.current.value ="";
+    e.preventDefault();
   }
 
   return(
