@@ -7,7 +7,7 @@ const Profile = (props) => {
     <main>
       <img className={classes.background} src="/images/beach.jpg" alt="beach" />
       <ProfileInfo />
-      <Posts postsData={props.postsData} addPost={props.addPost} />
+      <Posts postsData={props.postsData} newPostText={props.newPostText} dispatch={props.dispatch} />
     </main>
   );
 };
