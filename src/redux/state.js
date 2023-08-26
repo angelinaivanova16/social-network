@@ -1,3 +1,6 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
+
 let store = {
   _state: {
     profilePage: {
@@ -57,22 +60,10 @@ let store = {
       this._callSubscriber(this._state);
     }
   },
-  // addPost() {
-  //   let newPost = {
-  //     id: 5,
-  //     ava: '/images/kolyaAva.jpg',
-  //     message: this._state.profilePage.newPostText,
-  //     likes: 0
-  //   }
-  //   this._state.profilePage.postsData.push(newPost);
-  //   this._state.profilePage.newPostText ='';
-  //   this._callSubscriber(this._state);
-  // },
-  // updatePostText(newText) {
-  //   this._state.profilePage.newPostText = newText;
-  //   this._callSubscriber(this._state);
-  // },
 }
+
+export let addPostActionCreator = () =>  ({ type: ADD_POST });
+export let updatePostTextActionCreator = (text) => ({ type: UPDATE_POST_TEXT, newText: text });
 
 
 export default store;
