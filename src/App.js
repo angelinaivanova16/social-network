@@ -10,22 +10,49 @@ import Settings from "./components/settings/Settings";
 import { Routes, Route } from "react-router-dom";
 
 const App = (props) => {
-
   return (
-      <div className={classes.App}>
-        <Header />
-        <Navbar friendsData={props.state.sideBar.friendsData} />
-        <div className={classes.content}>
-          <Routes>
-            <Route path="/" element={<Profile postsData={props.state.profilePage.postsData} newPostText={props.state.profilePage.newPostText} dispatch={props.dispatch} />} />
-            <Route path="/profile" element={<Profile postsData={props.state.profilePage.postsData} newPostText={props.state.profilePage.newPostText} dispatch={props.dispatch} />} />
-            <Route path="/dialogs/*" element={<Dialogs dialogsData={props.state.dialogsPage.dialogsData} messagesData={props.state.dialogsPage.messagesData} />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/music" element={<Music />} />
-            <Route path="/settings" element={<Settings />} />
-          </Routes>
-        </div>
+    <div className={classes.App}>
+      <Header />
+      <Navbar friendsData={props.state.sideBar.friendsData} />
+      <div className={classes.content}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Profile
+                postsData={props.state.profilePage.postsData}
+                newPostText={props.state.profilePage.newPostText}
+                dispatch={props.dispatch}
+              />
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                postsData={props.state.profilePage.postsData}
+                newPostText={props.state.profilePage.newPostText}
+                dispatch={props.dispatch}
+              />
+            }
+          />
+          <Route
+            path="/dialogs/*"
+            element={
+              <Dialogs
+                dialogsData={props.state.dialogsPage.dialogsData}
+                messagesData={props.state.dialogsPage.messagesData}
+                newMessageText={props.state.dialogsPage.newMessageText}
+                dispatch={props.dispatch}
+              />
+            }
+          />
+          <Route path="/news" element={<News />} />
+          <Route path="/music" element={<Music />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
       </div>
+    </div>
   );
 };
 
