@@ -2,7 +2,10 @@ import React from "react";
 import classes from "./dialogs.module.css";
 import DialogItem from "./dialogItem/DialogItem";
 import MessageItem from "./messageItem/MessageItem";
-import { updateMessageTextActionCreator, addMessageActionCreator } from "../../redux/state";
+import {
+  addMessageActionCreator,
+  updateMessageTextActionCreator,
+} from "../../redux/dialogs-reducer";
 
 const Dialogs = (props) => {
   let dialogsElements = props.dialogsData.map((el) => (
@@ -13,17 +16,22 @@ const Dialogs = (props) => {
     <MessageItem message={el.message} id={el.id} />
   ));
 
-  let newMessageElement = React.createRef();
-
   let addMessage = () => {
     props.dispatch(addMessageActionCreator());
   };
 
-  let changeMessage = () => {
-    let textM = newMessageElement.current.value;
-    props.dispatch(updateMessageTextActionCreator(textM));
+  // let newMessageElement = React.createRef();
+
+  // let changeMessage = () => {
+  //   let textM = newMessageElement.current.value;
+  //   props.dispatch(updateMessageTextActionCreator(textM));
+  // };
+  // Закоментировала рабочий вариант с рефами. Через реф я обращалась к значению инпута.
+  //  Но рефы лучше не использовать. Поэтому ниже переделала тот же функионал с событием (event).
+  let changeMessage = (event) => {
+    let body = event.target.value;
+    props.dispatch(updateMessageTextActionCreator(body));
   };
-  
 
   return (
     <div className={classes.wrapper}>
@@ -36,7 +44,7 @@ const Dialogs = (props) => {
             type="text"
             onChange={changeMessage}
             placeholder="your message..."
-            ref={newMessageElement}
+            // ref={newMessageElement}
             value={props.newMessageText}
           />
           <button
