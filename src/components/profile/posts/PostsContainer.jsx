@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import Posts from "./Posts";
 import {
   addPostActionCreator,
@@ -24,6 +24,6 @@ let mapDispatchToProps = (dispatch) => {
   };
 };
 
-const PostsContainer = connect(mapStateToProps, mapDispatchToProps)(Posts);
+const PostsContainer = connect(mapStateToProps, mapDispatchToProps) (Posts);
 
 export default PostsContainer;
