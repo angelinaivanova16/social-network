@@ -1,4 +1,4 @@
-import Posts from "./posts/Posts";
+import PostsContainer from "./posts/PostsContainer";
 import ProfileInfo from "./profileInfo/ProfileInfo";
 import classes from "./profile.module.css";
 
@@ -7,7 +7,12 @@ const Profile = (props) => {
     <main>
       <img className={classes.background} src="/images/beach.jpg" alt="beach" />
       <ProfileInfo />
-      <Posts postsData={props.postsData} newPostText={props.newPostText} dispatch={props.dispatch} />
+      <PostsContainer
+        store={props.store}
+        // postsData={props.postsData}
+        // newPostText={props.newPostText}
+        // dispatch={props.dispatch}
+      />
     </main>
   );
 };

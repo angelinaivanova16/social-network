@@ -1,10 +1,6 @@
 import React from "react";
 import Post from "./post/Post";
 import classes from "./posts.module.css";
-import {
-  addPostActionCreator,
-  updatePostTextActionCreator,
-} from "../../../redux/profile-reducer";
 
 const Posts = (props) => {
   let postsElements = props.postsData.map((el) => (
@@ -13,13 +9,15 @@ const Posts = (props) => {
 
   let newPostElement = React.createRef();
 
-  let addPost = () => {
-    props.dispatch(addPostActionCreator());
+  let OnAddPost = () => {
+    // props.dispatch(addPostActionCreator());
+    props.addPost();
   };
 
-  let changePost = () => {
+  let OnChangePost = () => {
     let text = newPostElement.current.value;
-    props.dispatch(updatePostTextActionCreator(text));
+    // props.dispatch(updatePostTextActionCreator(text));
+    props.updatePostText(text);
   };
 
   return (
@@ -30,7 +28,7 @@ const Posts = (props) => {
           <input
             className={classes.postFormNews}
             type="text"
-            onChange={changePost}
+            onChange={OnChangePost}
             placeholder="your news..."
             ref={newPostElement}
             value={props.newPostText}
@@ -38,7 +36,7 @@ const Posts = (props) => {
           <button
             className={classes.postFormBtn}
             type="button"
-            onClick={addPost}
+            onClick={OnAddPost}
           >
             Send
           </button>
