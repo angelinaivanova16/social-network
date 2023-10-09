@@ -13,7 +13,9 @@ const App = (props) => {
   return (
     <div className={classes.App}>
       <Header />
-      <Navbar friendsData={props.state.sideBar.friendsData} />
+      <Navbar
+        friendsData={props.state.sideBar.friendsData}
+      />
       <div className={classes.content}>
         <Routes>
           <Route
