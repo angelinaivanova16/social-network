@@ -19,24 +19,22 @@ let initialState = {
 };
 
 const dialogsReducer = (state = initialState, action) => {
-
-  let stateCopy = {
-    ...state,
-    messagesData: [...state.messagesData]
-  };
-
   switch (action.type) {
     case ADD_MESSAGE:
       let newMessage = {
         id: 5,
         message: state.newMessageText,
       };
-      stateCopy.messagesData.push(newMessage);
-      stateCopy.newMessageText = "";
-      return stateCopy;
+      return {
+        ...state,
+        messagesData: [...state.messagesData, newMessage], // вместо метода push сразу при копировании массива добавила туда newMessage
+        newMessageText: "",
+      };
     case UPDATE_MESSAGE_TEXT:
-    stateCopy.newMessageText = action.newText2;
-      return stateCopy;
+      return {
+        ...state,
+        newMessageText: action.newText2,
+      };
     default:
       return state;
   }
