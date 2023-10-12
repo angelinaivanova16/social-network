@@ -1,0 +1,83 @@
+.user {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  margin-top: 1em;
+}
+
+.usersTitle {
+  margin-bottom: 1em;
+  font-size: 2em;
+}
+
+.userAvatar {
+  height: 85px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 2em 1.5em 0;
+}
+
+.ava {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  margin-right: 5px;
+}
+
+.userInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  height: 85px;
+  background-color: rgb(231, 224, 224);
+  border-radius: 10px;
+}
+
+.userNameAndStatus {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 10px;
+}
+
+.userName {
+  font-size: 1.5em;
+}
+.userStatus {
+  font-size: 0.8em;
+}
+
+.userLocation {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin: 15px 10px 0 0;
+}
+
+.city {
+  font-size: 1em;
+  padding-bottom: 5px;
+}
+.country {
+  font-size: 0.7em;
+}
+
+.userBtn {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(85, 99, 208);
+  font-size: 18px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.userBtn:hover {
+  opacity: 0.7;
+}
+
+.userInfo {
+  display: flex;
+}

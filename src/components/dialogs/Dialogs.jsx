@@ -12,10 +12,6 @@ const Dialogs = (props) => {
     <MessageItem message={el.message} id={el.id} />
   ));
 
-  let OnAddMessage = () => {
-    props.addMessage();
-  };
-
   let OnChangeMessage = (event) => {
     let body = event.target.value;
     props.updateMessageText(body);
@@ -38,7 +34,7 @@ const Dialogs = (props) => {
           <button
             className={classes.messageBtn}
             type="button"
-            onClick={OnAddMessage}
+            onClick={() => {props.addMessage()}}
           >
             Send
           </button>

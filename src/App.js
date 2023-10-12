@@ -8,14 +8,13 @@ import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
 import { Routes, Route } from "react-router-dom";
+import UsersContainer from "./components/users/UsersContainer";
 
 const App = (props) => {
   return (
     <div className={classes.App}>
       <Header />
-      <Navbar
-        friendsData={props.state.sideBar.friendsData}
-      />
+      <Navbar friendsData={props.state.sideBar.friendsData} />
       <div className={classes.content}>
         <Routes>
           <Route
@@ -53,6 +52,10 @@ const App = (props) => {
             }
           />
           <Route path="/news" element={<News />} />
+          <Route
+            path="/users"
+            element={<UsersContainer store={props.store} />}
+          />
           <Route path="/music" element={<Music />} />
           <Route path="/settings" element={<Settings />} />
         </Routes>
