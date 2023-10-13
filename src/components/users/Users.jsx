@@ -1,6 +1,44 @@
 import classes from "./users.module.css";
 
 const Users = (props) => {
+
+  if(props.users.length === 0) {
+    props.setUsers([
+        {
+          id: 1,
+          followed: true,
+          fullName: "Maria",
+          ava: "/images/mashaAva.jpg",
+          status: "Travel is good for the soul",
+          location: { city: "Minsk", country: "Belarus" },
+        },
+        {
+          id: 2,
+          followed: false,
+          fullName: "Dmitry",
+          ava: "/images/dimaAva.jpg",
+          status: "I`m a boss",
+          location: { city: "Minsk", country: "Belarus" },
+        },
+        {
+          id: 3,
+          followed: false,
+          fullName: "Roman",
+          ava: "/images/romaAva.jpg",
+          status: "Collect Moments, Not Things",
+          location: { city: "Moscow", country: "Russia" },
+        },
+        {
+          id: 4,
+          followed: true,
+          fullName: "Svetlana",
+          ava: "/images/svetaAva.jpg",
+          status: "Travel. Your money will return. Your time won’t.",
+          location: { city: "Nice", country: "France" },
+        },
+      ])
+  }
+
   return (
     <div className={classes.wrapper}>
       <h1 className={classes.usersTitle}>Users</h1>
