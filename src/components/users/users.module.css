@@ -81,3 +81,12 @@
 .userInfo {
   display: flex;
 }
+
+.selectedPage {
+  font-weight: bold;
+  color: magenta;
+  cursor: pointer;
+}
+.page{
+  cursor: pointer;
+}
