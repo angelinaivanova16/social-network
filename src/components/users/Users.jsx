@@ -1,100 +1,85 @@
-import React from "react";
 import classes from "./users.module.css";
-import axios from "axios";
 
-class Users extends React.Component {
-  componentDidMount() {
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
-      )
-      .then((response) => {
-        this.props.setUsers(response.data.items);
-        this.props.setTotalUsersCount(response.data.totalCount);
-      });
-  }
-  
-  changePage = (pageNumber) => {
-    this.props.changePage(pageNumber);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`
-      )
-      .then((response) => {
-        this.props.setUsers(response.data.items);
-        this.props.setTotalUsersCount(response.data.totalCount);
-      });
-      debugger
+const Users = (props) => {
+  let pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
+  let pages = [];
+  for (let i = 1; i <= 10; i++) {
+    pages.push(i);
   }
 
-  render() {
-    let pageCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
-    let pages = [];
-    for (let i = 1; i <= 10; i++) {
-      pages.push(i);
-    }
-    return (
-      <div className={classes.wrapper}>
-        <h1 className={classes.usersTitle}>Users</h1>
-        <div>
-          {pages.map((el) => {
-            return <span onClick={() => {this.changePage(el)}} key={el} className={this.props.currentPage === el ? classes.selectedPage : classes.page}>{`${el} `}</span>;
-          })}
-        </div>
-        <div className="users">
-          <ul>
-            {/* промапим каждого пользователя и создадим li на каждого */}
-            {this.props.users.map((el) => (
-              <li key={el.id} className={classes.user}>
-                <div className={classes.userAvatar}>
-                  {" "}
-                  <img
-                    className={classes.ava}
-                    src={
-                      el.photos.small != null
-                        ? el.photos.small
-                        : "/images/userIcon.jpg"
-                    }
-                    alt="ava"
-                  />
-                  {el.followed ? (
-                    <button
-                      onClick={() => {
-                        this.props.follow(el.id);
-                      }}
-                      className={classes.userBtn}
-                    >
-                      Unfollow
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => {
-                        this.props.unFollow(el.id);
-                      }}
-                      className={classes.userBtn}
-                    >
-                      Follow
-                    </button>
-                  )}
-                </div>
-                <div className={classes.userInfo}>
-                  <div className={classes.userNameAndStatus}>
-                    <p className={classes.userName}>{el.name}</p>
-                    <p className={classes.userStatus}>{el.status}</p>
-                  </div>
-                  <div className={classes.userLocation}>
-                    <p className={classes.city}>{"el.location.city"}</p>
-                    <p className={classes.country}>{"el.location.country"}</p>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+  return (
+    <div className={classes.wrapper}>
+      <h1 className={classes.usersTitle}>Users</h1>
+      <div>
+        {pages.map((el) => {
+          return (
+            <span
+              onClick={() => {
+                props.changePage(el);
+              }}
+              key={el}
+              className={
+                props.currentPage === el
+                  ? classes.selectedPage
+                  : classes.page
+              }
+            >{`${el} `}</span>
+          );
+        })}
       </div>
-    );
-  }
-}
+      <div className="users">
+        <ul>
+          {/* промапим каждого пользователя и создадим li на каждого */}
+          {props.users.map((el) => (
+            <li key={el.id} className={classes.user}>
+              <div className={classes.userAvatar}>
+                {" "}
+                <img
+                  className={classes.ava}
+                  src={
+                    el.photos.small != null
+                      ? el.photos.small
+                      : "/images/userIcon.jpg"
+                  }
+                  alt="ava"
+                />
+                {el.followed ? (
+                  <button
+                    onClick={() => {
+                      props.follow(el.id);
+                    }}
+                    className={classes.userBtn}
+                  >
+                    Unfollow
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      props.unFollow(el.id);
+                    }}
+                    className={classes.userBtn}
+                  >
+                    Follow
+                  </button>
+                )}
+              </div>
+              <div className={classes.userInfo}>
+                <div className={classes.userNameAndStatus}>
+                  <p className={classes.userName}>{el.name}</p>
+                  <p className={classes.userStatus}>{el.status}</p>
+                </div>
+                <div className={classes.userLocation}>
+                  <p className={classes.city}>{"el.location.city"}</p>
+                  <p className={classes.country}>{"el.location.country"}</p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
 
 // if(props.users.length === 0) {
 //   props.setUsers([
