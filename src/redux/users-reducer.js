@@ -60,11 +60,11 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-export let followAC = (userId) => ({ type: FOLLOW, userId });
-export let unFollowAC = (userId) => ({ type: UNFOLLOW, userId });
-export let setUsersAC = (users) => ({type: SET_USERS, users});
-export let setTotalUsersCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount});
-export let changePageAC = (selectedPage) => ({type: CHANGE_PAGE, selectedPage});
-export let togglePreloaderAC = (isFetching) => ({type: TOGGLE_PRELOADER, isFetching})
+export let follow = (userId) => ({ type: FOLLOW, userId });
+export let unFollow = (userId) => ({ type: UNFOLLOW, userId });
+export let setUsers = (users) => ({type: SET_USERS, users});
+export let setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount});
+export let changePage = (selectedPage) => ({type: CHANGE_PAGE, selectedPage});
+export let togglePreloader = (isFetching) => ({type: TOGGLE_PRELOADER, isFetching})
 
 export default usersReducer;
