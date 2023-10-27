@@ -1,4 +1,5 @@
 import classes from "./users.module.css";
+import { NavLink } from "react-router-dom";
 
 const Users = (props) => {
   let pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -6,7 +7,6 @@ const Users = (props) => {
   for (let i = 1; i <= 10; i++) {
     pages.push(i);
   }
-
   return (
     <div className={classes.wrapper}>
       <h1 className={classes.usersTitle}>Users</h1>
@@ -34,15 +34,18 @@ const Users = (props) => {
             <li key={el.id} className={classes.user}>
               <div className={classes.userAvatar}>
                 {" "}
-                <img
-                  className={classes.ava}
-                  src={
-                    el.photos.small != null
-                      ? el.photos.small
-                      : "/images/userIcon.jpg"
-                  }
-                  alt="ava"
-                />
+                <NavLink to='/profile' className={classes.link}>
+                  <img onClick={() => {props.setUserProfile(el.id)}}
+                    className={classes.ava}
+                    src={
+                      el.photos.small != null
+                        ? el.photos.small
+                        : "/images/userIcon.jpg"
+                    }
+                    alt="ava"
+                  />
+                </NavLink>
+
                 {el.followed ? (
                   <button
                     onClick={() => {

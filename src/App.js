@@ -2,7 +2,7 @@ import "./reset.css";
 import classes from "./App.module.css";
 import Header from "./components/header/Header";
 import Navbar from "./components/navbar/Navbar";
-import Profile from "./components/profile/Profile";
+import ProfileContainer from "./components/profile/ProfilesContainer"
 import DialogsContainer from "./components/dialogs/DialogsContainer";
 import News from "./components/news/News";
 import Music from "./components/music/Music";
@@ -20,22 +20,16 @@ const App = (props) => {
           <Route
             path="/"
             element={
-              <Profile
+              <ProfileContainer
                 store={props.store}
-                // postsData={props.state.profilePage.postsData}
-                // newPostText={props.state.profilePage.newPostText}
-                // dispatch={props.dispatch}
               />
             }
           />
           <Route
             path="/profile"
             element={
-              <Profile
+              <ProfileContainer
                 store={props.store}
-                // postsData={props.state.profilePage.postsData}
-                // newPostText={props.state.profilePage.newPostText}
-                // dispatch={props.dispatch}
               />
             }
           />
@@ -44,10 +38,6 @@ const App = (props) => {
             element={
               <DialogsContainer
                 store={props.store}
-                // dialogsData={props.state.dialogsPage.dialogsData}
-                // messagesData={props.state.dialogsPage.messagesData}
-                // newMessageText={props.state.dialogsPage.newMessageText}
-                // dispatch={props.dispatch}
               />
             }
           />

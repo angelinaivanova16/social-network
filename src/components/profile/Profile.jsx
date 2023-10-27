@@ -6,12 +6,9 @@ const Profile = (props) => {
   return (
     <main>
       <img className={classes.background} src="/images/beach.jpg" alt="beach" />
-      <ProfileInfo />
+      <ProfileInfo profile={props.profile} />
       <PostsContainer
         store={props.store}
-        // postsData={props.postsData}
-        // newPostText={props.newPostText}
-        // dispatch={props.dispatch}
       />
     </main>
   );
