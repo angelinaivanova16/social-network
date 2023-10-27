@@ -2,7 +2,7 @@ import "./reset.css";
 import classes from "./App.module.css";
 import Header from "./components/header/Header";
 import Navbar from "./components/navbar/Navbar";
-import ProfileContainer from "./components/profile/ProfilesContainer"
+import ProfilesContainer from "./components/profile/ProfilesContainer"
 import DialogsContainer from "./components/dialogs/DialogsContainer";
 import News from "./components/news/News";
 import Music from "./components/music/Music";
@@ -18,17 +18,17 @@ const App = (props) => {
       <div className={classes.content}>
         <Routes>
           <Route
-            path="/"
+            path="/profile/*"
             element={
-              <ProfileContainer
+              <ProfilesContainer
                 store={props.store}
               />
             }
           />
           <Route
-            path="/profile"
+            path="/profile/:userId?"
             element={
-              <ProfileContainer
+              <ProfilesContainer
                 store={props.store}
               />
             }

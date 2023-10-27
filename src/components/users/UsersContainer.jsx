@@ -10,10 +10,10 @@ import {
   changePage,
   togglePreloader,
 } from "../../redux/users-reducer";
-import { setUserProfile } from "../../redux/profile-reducer";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
+    // debugger
     this.props.togglePreloader(true);
     axios
       .get(
@@ -37,17 +37,6 @@ class UsersContainer extends React.Component {
         this.props.togglePreloader(false);
         this.props.setUsers(response.data.items);
         this.props.setTotalUsersCount(response.data.totalCount);
-      });
-  };
-
-  goToProfile = (userId) => {
-    this.props.setUserProfile(userId);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/profile/${userId}`
-      )
-      .then((response) => {
-        this.props.setUserProfile(response.data);
       });
   };
   
@@ -106,4 +95,4 @@ let mapStateToProps = (state) => {
 //   };
 // };
 
-export default connect(mapStateToProps, {follow, unFollow, setUsers, setTotalUsersCount, changePage, togglePreloader, setUserProfile})(UsersContainer);
+export default connect(mapStateToProps, {follow, unFollow, setUsers, setTotalUsersCount, changePage, togglePreloader})(UsersContainer);

@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const Users = (props) => {
   let pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
   let pages = [];
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= 20; i++) {
     pages.push(i);
   }
   return (
@@ -19,9 +19,7 @@ const Users = (props) => {
               }}
               key={el}
               className={
-                props.currentPage === el
-                  ? classes.selectedPage
-                  : classes.page
+                props.currentPage === el ? classes.selectedPage : classes.page
               }
             >{`${el} `}</span>
           );
@@ -34,8 +32,8 @@ const Users = (props) => {
             <li key={el.id} className={classes.user}>
               <div className={classes.userAvatar}>
                 {" "}
-                <NavLink to='/profile' className={classes.link}>
-                  <img onClick={() => {props.setUserProfile(el.id)}}
+                <NavLink to={"/profile/" + el.id} className={classes.link}>
+                  <img
                     className={classes.ava}
                     src={
                       el.photos.small != null
@@ -45,7 +43,6 @@ const Users = (props) => {
                     alt="ava"
                   />
                 </NavLink>
-
                 {el.followed ? (
                   <button
                     onClick={() => {

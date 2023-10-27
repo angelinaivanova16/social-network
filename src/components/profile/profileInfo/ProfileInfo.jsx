@@ -3,14 +3,15 @@ import classes from "./profileInfo.module.css";
 const ProfileInfo = (props) => {
   if(!props.profile) {
     return <img src="/images/preloader.gif" alt="Loading..." /> }
+
   return (
     <div className={classes.about}>
-        {/* <img className={classes.ava} src={props.profile.photos.small} alt="" /> */}
+        <img className={classes.ava} src={props.profile.photos.small} alt="" />
       <div>
         <h1 className={classes.title}>{props.profile.fullName}</h1>
         <p className={classes.text}>About Me: {props.profile.aboutMe}</p>
         <p className={classes.text}>Looking For A Job: {props.profile.lookingForAJobDescription}</p>
-        {/* <p className={classes.text}>
+        <p className={classes.text}>
           Web Site:{" "}
           <a
             className={classes.mySite}
@@ -20,7 +21,7 @@ const ProfileInfo = (props) => {
           >
             {props.profile.contacts.vk}
           </a>
-        </p> */}
+        </p>
       </div>
     </div>
   );
