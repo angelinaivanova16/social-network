@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 function ProfilesContainer(props) {
   let { userId } = useParams();
   if (!userId) {
-    userId = 2;
+    userId = 30247;
 }
 
   useEffect(() => {

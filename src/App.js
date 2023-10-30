@@ -1,6 +1,6 @@
 import "./reset.css";
 import classes from "./App.module.css";
-import Header from "./components/header/Header";
+import HeaderContainer from "./components/header/HeaderContainer";
 import Navbar from "./components/navbar/Navbar";
 import ProfilesContainer from "./components/profile/ProfilesContainer"
 import DialogsContainer from "./components/dialogs/DialogsContainer";
@@ -13,10 +13,18 @@ import UsersContainer from "./components/users/UsersContainer";
 const App = (props) => {
   return (
     <div className={classes.App}>
-      <Header />
+      <div className={classes.header}><HeaderContainer store={props.store}/></div>
       <Navbar friendsData={props.state.sideBar.friendsData} />
       <div className={classes.content}>
         <Routes>
+        <Route
+            path="/"
+            element={
+              <ProfilesContainer
+                store={props.store}
+              />
+            }
+          />
           <Route
             path="/profile/*"
             element={
@@ -48,6 +56,10 @@ const App = (props) => {
           />
           <Route path="/music" element={<Music />} />
           <Route path="/settings" element={<Settings />} />
+          <Route
+            path="/login"
+            element={<UsersContainer store={props.store} />}
+          />
         </Routes>
       </div>
     </div>

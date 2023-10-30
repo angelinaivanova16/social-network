@@ -20,3 +20,7 @@
   grid-area: c;
   color: rgb(89, 78, 78);
 }
+
+.header {
+  grid-area: h;
+}
