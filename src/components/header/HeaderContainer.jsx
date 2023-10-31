@@ -14,7 +14,6 @@ const HeaderContainer = (props) => {
             let {id, email, login} = response.data.data;
             props.setAuthUserData(id, email, login);
           }
-          // debugger
         });
 });
 

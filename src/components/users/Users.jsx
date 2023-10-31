@@ -1,5 +1,6 @@
 import classes from "./users.module.css";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 const Users = (props) => {
   let pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -46,7 +47,21 @@ const Users = (props) => {
                 {el.followed ? (
                   <button
                     onClick={() => {
-                      props.follow(el.id);
+                      axios
+                        .delete(
+                          `https://social-network.samuraijs.com/api/1.0/follow/${el.id}`,
+                          {
+                            withCredentials: true,
+                            headers: {
+                              "API-KEY": "ba24b964-489f-421c-8813-2f7e98f7798d",
+                            },
+                          }
+                        )
+                        .then((response) => {
+                          if (response.data.resultCode === 0) {
+                            props.unFollow(el.id);
+                          }
+                        });
                     }}
                     className={classes.userBtn}
                   >
@@ -55,7 +70,22 @@ const Users = (props) => {
                 ) : (
                   <button
                     onClick={() => {
-                      props.unFollow(el.id);
+                      axios
+                        .post(
+                          `https://social-network.samuraijs.com/api/1.0/follow/${el.id}`,
+                          {},
+                          {
+                            withCredentials: true,
+                            headers: {
+                              "API-KEY" : "ba24b964-489f-421c-8813-2f7e98f7798d",
+                            },
+                          }
+                        )
+                        .then((response) => {
+                          if (response.data.resultCode === 0) { // подписка произошла, сервак подтвердил
+                            props.follow(el.id); // тогда вызываем наш колбэк follow
+                          }
+                        });
                     }}
                     className={classes.userBtn}
                   >
