@@ -9,7 +9,7 @@ const Dialogs = (props) => {
   ));
 
   let messagesElements = props.messagesData.map((el) => (
-    <MessageItem message={el.message} id={el.id} />
+    <MessageItem key={el.id} message={el.message} id={el.id} />
   ));
 
   let OnChangeMessage = (event) => {

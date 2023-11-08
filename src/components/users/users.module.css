@@ -74,9 +74,12 @@
   cursor: pointer;
   transition: 0.3s;
 }
-.userBtn:hover {
+/* .userBtn:hover {
   opacity: 0.7;
-}
+} */
+/* .userBtn:disabled {
+  display: none;
+} */
 
 .userInfo {
   display: flex;
