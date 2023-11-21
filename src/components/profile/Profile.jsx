@@ -1,11 +1,12 @@
 import PostsContainer from "./posts/PostsContainer";
 import ProfileInfo from "./profileInfo/ProfileInfo";
-import classes from "./profile.module.css";
+import { Navigate } from "react-router-dom";
 
 const Profile = (props) => {
+  if (props.isAuth === false) return <Navigate to={"/login"} />
+
   return (
     <main>
-      <img className={classes.background} src="/images/beach.jpg" alt="beach" />
       <ProfileInfo profile={props.profile} />
       <PostsContainer
         store={props.store}

@@ -16,7 +16,7 @@ function ProfilesContainer(props) {
 
   return (
       <div>
-          <Profile profile={props.profile} />
+          <Profile profile={props.profile} isAuth={props.isAuth} />
       </div>
   );
 }
@@ -42,7 +42,8 @@ function ProfilesContainer(props) {
 // }
 
 const mapStateToProps = (state) => ({
-  profile: state.profilePage.profile
+  profile: state.profilePage.profile,
+  isAuth: state.authPage.isAuth,
 })
 
 // let withUrlDataContainerComponent = withRouter(ProfileContainer);
