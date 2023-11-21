@@ -7,6 +7,8 @@ import DialogsContainer from "./components/dialogs/DialogsContainer";
 import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
+import Login from "./components/login/Login";
+import Registration from "./components/registration/Registrationn";
 import { Routes, Route } from "react-router-dom";
 import UsersContainer from "./components/users/UsersContainer";
 
@@ -58,7 +60,11 @@ const App = (props) => {
           <Route path="/settings" element={<Settings />} />
           <Route
             path="/login"
-            element={<UsersContainer store={props.store} />}
+            element={<Login store={props.store} />}
+          />
+          <Route
+            path="/registration"
+            element={<Registration store={props.store} />}
           />
         </Routes>
       </div>

@@ -1,0 +1,138 @@
+@font-face {
+  font-family: Montserrat-Light;
+  src: url("./../../../public/fonts/Montserrat-Light.ttf");
+}
+@font-face {
+  font-family: Montserrat-Regular;
+  src: url("./../../../public/fonts/Montserrat-Regular.ttf");
+}
+@font-face {
+  font-family: Montserrat-Bold;
+  src: url("./../../../public/fonts/Montserrat-Bold.ttf");
+}
+
+.authorizationContainer {
+  height: 100vh;
+  background-image: url('/public/images/bgLake.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formAuthorization {
+  z-index: 2;
+  width: 460px;
+  height: 340px;
+  background-color: #FFFFFF;
+}
+
+.formAuthorizationSubtitle {
+  text-align: end;
+  text-decoration: underline;
+  font-family: Montserrat-Light;
+  font-size: 11px;
+  line-height: 13px;
+  color: rgb(85, 99, 208);
+  padding: 11px 11px 0 0;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+.formAuthorizationSubtitle:hover {
+  opacity: 0.7;
+}
+
+.formAuthorizationWrapper {
+  text-align: center;
+}
+
+.formAuthorizationTitle {
+  font-family: Montserrat-Bold;
+  text-transform: uppercase;
+  font-size: 31px;
+  line-height: 38px;
+  color: rgb(85, 99, 208);
+  margin-bottom: 21px;
+}
+
+.formAuthorizationItem {
+  width: 420px;
+  height: 39px;
+  border: 1px solid rgb(85, 99, 208);
+  border-radius: 61px;
+  margin-top: 15px;
+}
+
+.formAuthorizationItem::placeholder {
+  font-family: Montserrat-Regular;
+  text-align: left;
+  font-size: 16px;
+  line-height: 20px;
+  color: #595259;
+  padding-left: 15px;
+}
+
+.formAuthorizationItemCheckbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.formAuthorizationItemCheckbox+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+}
+.formAuthorizationItemCheckbox+label::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid rgb(85, 99, 208);
+  border-radius: 50px;
+  margin: 0 10px 0 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-left: -141px;
+}
+.formAuthorizationItemCheckbox:checked+label::before {
+  background-image: url("/public/svg/check.svg");
+  background-size: contain;
+}
+
+.formAuthorizationAgreement {
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+.formAuthorizationAgree {
+  font-family: Montserrat-Light;
+  font-size: 11px;
+  line-height: 13px;
+  color: #301411;
+  cursor: pointer;
+}
+
+.formAuthorizationBtn {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(85, 99, 208);
+  font-size: 18px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.formAuthorizationBtn:hover {
+  opacity: 0.8;
+}
+
+.higher2 {
+  margin-top: -40px;
+}
