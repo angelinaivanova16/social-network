@@ -1,3 +1,5 @@
+import { profileAPI } from "../api/api";
+
 const ADD_POST = "ADD-POST";
 const UPDATE_POST_TEXT = "UPDATE-POST-TEXT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
@@ -50,11 +52,24 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
+//action-creators:
 export let addPostActionCreator = () => ({ type: ADD_POST });
 export let updatePostTextActionCreator = (text) => ({
   type: UPDATE_POST_TEXT,
   newText: text,
 });
 export let setUserProfile = (userData) => ({ type: SET_USER_PROFILE , userData});
+
+//thunk-creators-functions: 
+//(thunk-functions for requests from UI - BLL - DAL)
+//(thunk-creators - родительская функция, которая вернет thunk-функцию, которая будет брать и запоминать 
+// данные у родительской функции, даже когда родит.функция будет уже выполнена - для создания замыкания)
+export let setUserProfileThunkCreator = (userId) => {
+  return (dispatch) => {
+    profileAPI.setUserProfile(userId).then((data) => {
+      dispatch(setUserProfile(data));
+  });
+  }
+}
 
 export default profileReducer;

@@ -1,3 +1,5 @@
+import { usersAPI, followAPI } from "../api/api";
+
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET-USERS";
@@ -58,27 +60,63 @@ const usersReducer = (state = initialState, action) => {
         isFetching: action.isFetching,
       };
     case TOGGLE_FOLLOWING_IN_PROGRESS: 
-      // debugger
       return {
         ...state,
         followingInProgress: action.isLoading
           ? [...state.followingInProgress, action.userId]
-          : state.followingInProgress.filter(id => id != action.userId)
+          : state.followingInProgress.filter(id => id !== action.userId)
       }
     default:
       return state;
   }
 };
 
+//action-creators:
 export let follow = (userId) => ({ type: FOLLOW, userId });
 export let unFollow = (userId) => ({ type: UNFOLLOW, userId });
 export let setUsers = (users) => ({ type: SET_USERS, users });
-export let setTotalUsersCount = (totalUsersCount) => ({
-  type: SET_TOTAL_USERS_COUNT,
-  totalUsersCount,
-});
+export let setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount });
 export let changePage = (selectedPage) => ({ type: CHANGE_PAGE, selectedPage });
 export let togglePreloader = (isFetching) => ({type: TOGGLE_PRELOADER, isFetching});
 export let toggleFollowing = (isLoading, userId) => ({type: TOGGLE_FOLLOWING_IN_PROGRESS, isLoading, userId});
+
+//thunk-creators-functions: 
+//(thunk-functions for requests from UI - BLL - DAL)
+//(thunk-creators - родительская функция, которая вернет thunk-функцию, которая будет брать и запоминать 
+// данные у родительской функции, даже когда родит.функция будет уже выполнена - для создания замыкания) 
+export const getUsersThunkCreator = (currentPage, pageSize) => {
+  return (dispatch) => {
+    dispatch(togglePreloader(true));
+    usersAPI.getUsers(currentPage, pageSize).then((data) => {
+      dispatch(togglePreloader(false));
+      dispatch(setUsers(data.items));
+      dispatch(setTotalUsersCount(data.totalCount));
+      });
+  }
+}
+
+export const unfollowUserThunkCreator = (userId) => {
+  return (dispatch) => {
+    dispatch(toggleFollowing(true, userId));
+    followAPI.unfollowUser(userId).then((data) => {
+      if (data.resultCode === 0) {
+        dispatch(unFollow(userId));
+        dispatch(toggleFollowing(false, userId));
+      }
+    });
+  }
+}
+
+export const followUserThunkCreator = (userId) => {
+  return (dispatch) => {
+    dispatch(toggleFollowing(true, userId));
+    followAPI.followUser(userId).then((data) => {
+      if (data.resultCode === 0) {   // подписка произошла, сервак подтвердил
+        dispatch(follow(userId));
+        dispatch(toggleFollowing(false, userId));
+      }
+    });
+  }
+}
 
 export default usersReducer;

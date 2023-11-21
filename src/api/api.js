@@ -16,13 +16,13 @@ export const usersAPI = {
         return response.data;
       });
   },
-  changePageNumber(pageNumber, pageSize) {
-    return instance
-      .get(`users?page=${pageNumber}&count=${pageSize}`)
-      .then((response) => {
-        return response.data;
-      });
-  },
+  // changePageNumber(pageNumber, pageSize) {
+  //   return instance
+  //     .get(`users?page=${pageNumber}&count=${pageSize}`)
+  //     .then((response) => {
+  //       return response.data;
+  //     });
+  // },
 };
 
 export const followAPI = {

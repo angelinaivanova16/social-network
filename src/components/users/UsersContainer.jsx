@@ -2,34 +2,20 @@ import React from "react";
 import { connect } from "react-redux";
 import Users from "./Users";
 import {
-  follow,
-  unFollow,
-  setUsers,
-  setTotalUsersCount,
   changePage,
-  togglePreloader,
-  toggleFollowing,
+  getUsersThunkCreator,
+  unfollowUserThunkCreator,
+  followUserThunkCreator,
 } from "../../redux/users-reducer";
-import { usersAPI } from "../../api/api";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.togglePreloader(true);
-    usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
-        this.props.togglePreloader(false);
-        this.props.setUsers(data.items);
-        this.props.setTotalUsersCount(data.totalCount);
-      });
+    this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
   }
 
   changePage = (pageNumber) => {
     this.props.changePage(pageNumber);
-    this.props.togglePreloader(true);
-    usersAPI.changePageNumber(pageNumber, this.props.pageSize).then((data) => {
-        this.props.togglePreloader(false);
-        this.props.setUsers(data.items);
-        this.props.setTotalUsersCount(data.totalCount);
-      });
+    this.props.getUsersThunkCreator(pageNumber, this.props.pageSize)
   };
   
   render() {
@@ -43,13 +29,10 @@ class UsersContainer extends React.Component {
           pageSize={this.props.pageSize}
           currentPage={this.props.currentPage}
           users={this.props.users}
-          follow={this.props.follow}
-          unFollow={this.props.unFollow}
           changePage={this.changePage}
-          isFetching={this.props.isFetching}
-          setUserProfile={this.props.setUserProfile}
           followingInProgress={this.props.followingInProgress}
-          toggleFollowing={this.props.toggleFollowing}
+          unfollowUserThunkCreator={this.props.unfollowUserThunkCreator}
+          followUserThunkCreator={this.props.followUserThunkCreator}
         />
       </>
     );
@@ -90,4 +73,4 @@ let mapStateToProps = (state) => {
 //   };
 // };
 
-export default connect(mapStateToProps, {follow, unFollow, setUsers, setTotalUsersCount, changePage, togglePreloader, toggleFollowing})(UsersContainer);
+export default connect(mapStateToProps, {changePage, getUsersThunkCreator, unfollowUserThunkCreator, followUserThunkCreator})(UsersContainer);

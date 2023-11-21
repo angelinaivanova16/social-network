@@ -2,18 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import Header from "./Header";
 import { useEffect } from "react";
-import { setAuthUserData } from "../../redux/auth-reducer";
-import { authMeAPI } from "../../api/api";
+import { authMeThunkCreator } from "../../redux/auth-reducer";
 
 const HeaderContainer = (props) => {
   useEffect(() => {
-    authMeAPI.authMe().then((data) => {
-          if(data.resultCode === 0) {
-            let {id, email, login} = data.data;
-            props.setAuthUserData(id, email, login);
-          }
-        });
-});
+    props.authMeThunkCreator()
+  });
 
   return <div>
     <Header isAuth={props.isAuth} login={props.login}/>
@@ -27,4 +21,4 @@ let mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {setAuthUserData})(HeaderContainer);
+export default connect(mapStateToProps, {authMeThunkCreator})(HeaderContainer);

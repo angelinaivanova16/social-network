@@ -1,6 +1,5 @@
 import classes from "./users.module.css";
 import { NavLink } from "react-router-dom";
-import { followAPI } from "../../api/api";
 
 const Users = (props) => {
   // let pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -45,35 +44,15 @@ const Users = (props) => {
                   />
                 </NavLink>
                 {el.followed ? (
-                  <button disabled={props.followingInProgress.some(id => id === el.id)}
-                    onClick={() => {
-                      props.toggleFollowing(true, el.id);
-                      followAPI.unfollowUser(el.id).then((data) => {
-                        if (data.resultCode === 0) {
-                          props.unFollow(el.id);
-                          props.toggleFollowing(false, el.id);
-                        }
-                      });
-                    }}
-                    className={classes.userBtn}
-                  >
-                    Unfollow
-                  </button>
+                  <button
+                    disabled={props.followingInProgress.some((id) => id === el.id)}
+                    onClick={() => {props.unfollowUserThunkCreator(el.id)}}
+                    className={classes.userBtn}>Unfollow</button>
                 ) : (
-                  <button disabled={props.followingInProgress.some(id => id === el.id)}
-                    onClick={() => {
-                      props.toggleFollowing(true, el.id);
-                      followAPI.followUser(el.id).then((data) => {
-                        if (data.resultCode === 0) {   // подписка произошла, сервак подтвердил
-                          props.follow(el.id);   // тогда вызываем наш колбэк follow
-                          props.toggleFollowing(false, el.id);
-                        }
-                      });
-                    }}
-                    className={classes.userBtn}
-                  >
-                    Follow
-                  </button>
+                  <button
+                    disabled={props.followingInProgress.some((id) => id === el.id)}
+                    onClick={() => {props.followUserThunkCreator(el.id)}}
+                    className={classes.userBtn}>Follow</button>
                 )}
               </div>
               <div className={classes.userInfo}>
