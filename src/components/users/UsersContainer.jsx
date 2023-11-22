@@ -7,6 +7,7 @@ import {
   unfollowUserThunkCreator,
   followUserThunkCreator,
 } from "../../redux/users-reducer";
+import { compose } from "@reduxjs/toolkit";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -50,6 +51,12 @@ let mapStateToProps = (state) => {
   };
 };
 
+export default compose(
+  connect(mapStateToProps, {changePage, getUsersThunkCreator, unfollowUserThunkCreator, followUserThunkCreator})
+) (UsersContainer);
+
+
+
 // let mapDispatchToProps = (dispatch) => {
 //   return {
 //     follow: (userId) => {
@@ -72,5 +79,3 @@ let mapStateToProps = (state) => {
 //     },
 //   };
 // };
-
-export default connect(mapStateToProps, {changePage, getUsersThunkCreator, unfollowUserThunkCreator, followUserThunkCreator})(UsersContainer);

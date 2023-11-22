@@ -5,13 +5,14 @@ import {
   updateMessageTextActionCreator,
 } from "../../redux/dialogs-reducer";
 import { connect } from "react-redux";
+import { compose } from "@reduxjs/toolkit";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 let mapStateToProps = (state) => {
   return {
     dialogsData: state.dialogsPage.dialogsData,
     messagesData: state.dialogsPage.messagesData,
     newMessageText: state.dialogsPage.newMessageText,
-    isAuth: state.authPage.isAuth,
   };
 };
 let mapDispatchToProps = (dispatch) => {
@@ -25,6 +26,7 @@ let mapDispatchToProps = (dispatch) => {
   };
 };
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
-
-export default DialogsContainer;
+export default compose (
+  connect(mapStateToProps, mapDispatchToProps),
+  withAuthRedirect // это наш HOC, чтобы не дублировать код.
+) (Dialogs);
