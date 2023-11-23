@@ -1,3 +1,4 @@
+import ProfileStatus from "./ProfileStatus";
 import classes from "./profileInfo.module.css";
 
 const ProfileInfo = (props) => {
@@ -9,6 +10,7 @@ const ProfileInfo = (props) => {
         <img className={classes.ava} src={props.profile.photos.small} alt="" />
       <div>
         <h1 className={classes.title}>{props.profile.fullName}</h1>
+        <ProfileStatus status={'status'}/>
         <p className={classes.text}>About Me: {props.profile.aboutMe}</p>
         <p className={classes.text}>Looking For A Job: {props.profile.lookingForAJobDescription}</p>
         <p className={classes.text}>
