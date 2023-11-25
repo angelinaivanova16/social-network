@@ -20,19 +20,12 @@ export const usersAPI = {
 
 export const followAPI = {
   followUser(id) {
-    // debugger
     return instance
       .post(`follow/${id}`)
-      .then((response) => {
-        return response.data;
-      });
   },
   unfollowUser(id) {
     return instance
       .delete(`follow/${id}`)
-      .then((response) => {
-        return response.data;
-      });
   },
 };
 
@@ -40,9 +33,6 @@ export const authMeAPI = {
   authMe() {
     return instance
       .get(`auth/me`)
-      .then((response) => {
-        return response.data;
-      });
   },
 };
 
@@ -50,9 +40,6 @@ export const profileAPI = {
   setUserProfile(userId) {
     return instance
       .get(`profile/` + userId)
-      .then((response) => {
-        return response.data;
-      });
   }
 };
 
@@ -60,16 +47,10 @@ export const statusAPI = {
   getStatus(userId) {
     return instance
       .get(`profile/status/` + userId)
-      .then((response) => {
-        return response.data;
-      });
   },
   updateStatus(status) {
     debugger
     return instance
       .put(`profile/status`, {status: status})
-      .then((response) => {
-        return response.data;
-      });
   }
 };

@@ -74,24 +74,24 @@ export let setUserStatus = (status) => ({type: SET_USER_STATUS, status})
 // данные у родительской функции, даже когда родит.функция будет уже выполнена - для создания замыкания)
 export let setUserProfileThunkCreator = (userId) => {
   return (dispatch) => {
-    profileAPI.setUserProfile(userId).then((data) => {
-      dispatch(setUserProfile(data));
+    profileAPI.setUserProfile(userId).then((response) => {
+      dispatch(setUserProfile(response.data));
   });
   }
 }
 
 export let getStatusThunkCreator = (userId) => {
   return (dispatch) => {
-    statusAPI.getStatus(userId).then((data) => {
-      dispatch(setUserStatus(data));
+    statusAPI.getStatus(userId).then((response) => {
+      dispatch(setUserStatus(response.data));
   });
   }
 }
 
 export let updateStatusThunkCreator = (status) => {
   return (dispatch) => {
-    statusAPI.updateStatus(status).then((data) => {
-      if (data.resultCode === 0) {
+    statusAPI.updateStatus(status).then((response) => {
+      if (response.data.resultCode === 0) {
         dispatch(setUserStatus(status));
       }
   });

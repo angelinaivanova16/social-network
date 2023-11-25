@@ -26,9 +26,9 @@ export let setAuthUserData = (id, email, login) => ({ type: SET_AUTH_USER_DATA, 
 
 export const authMeThunkCreator = () => {
   return (dispatch) => {
-    authMeAPI.authMe().then((data) => {
-      if(data.resultCode === 0) {
-        let {id, email, login} = data.data;
+    authMeAPI.authMe().then((response) => {
+      if(response.data.resultCode === 0) {
+        let {id, email, login} = response.data.data;
         dispatch(setAuthUserData(id, email, login));
       }
     });

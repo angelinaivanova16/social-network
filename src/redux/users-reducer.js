@@ -98,8 +98,8 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
 export const unfollowUserThunkCreator = (userId) => {
   return (dispatch) => {
     dispatch(toggleFollowing(true, userId));
-    followAPI.unfollowUser(userId).then((data) => {
-      if (data.resultCode === 0) {
+    followAPI.unfollowUser(userId).then((response) => {
+      if (response.data.resultCode === 0) {
         dispatch(unFollow(userId));
         dispatch(toggleFollowing(false, userId));
       }
@@ -110,8 +110,8 @@ export const unfollowUserThunkCreator = (userId) => {
 export const followUserThunkCreator = (userId) => {
   return (dispatch) => {
     dispatch(toggleFollowing(true, userId));
-    followAPI.followUser(userId).then((data) => {
-      if (data.resultCode === 0) {   // подписка произошла, сервак подтвердил
+    followAPI.followUser(userId).then((response) => {
+      if (response.data.resultCode === 0) {   // подписка произошла, сервак подтвердил
         dispatch(follow(userId));
         dispatch(toggleFollowing(false, userId));
       }
