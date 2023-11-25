@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Profile from "./Profile";
-import { setUserProfileThunkCreator } from "../../redux/profile-reducer";
+import { setUserProfileThunkCreator, getStatusThunkCreator, updateStatusThunkCreator } from "../../redux/profile-reducer";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
@@ -14,21 +14,27 @@ function ProfilesContainer(props) {
 
   useEffect(() => {
     props.setUserProfileThunkCreator(userId)
+    props.getStatusThunkCreator(userId)
   }, [userId]);
 
   return (
       <div>
-          <Profile profile={props.profile} isAuth={props.isAuth} />
+          <Profile 
+            profile={props.profile} 
+            status={props.status} 
+            updateStatusThunkCreator={props.updateStatusThunkCreator} 
+          />
       </div>
   );
 }
 
 const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
+  status: state.profilePage.status,
 })
 
 export default compose(
-  connect(mapStateToProps, {setUserProfileThunkCreator}),
+  connect(mapStateToProps, {setUserProfileThunkCreator, getStatusThunkCreator, updateStatusThunkCreator}),
   withAuthRedirect
 ) (ProfilesContainer);
 

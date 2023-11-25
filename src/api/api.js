@@ -16,13 +16,6 @@ export const usersAPI = {
         return response.data;
       });
   },
-  // changePageNumber(pageNumber, pageSize) {
-  //   return instance
-  //     .get(`users?page=${pageNumber}&count=${pageSize}`)
-  //     .then((response) => {
-  //       return response.data;
-  //     });
-  // },
 };
 
 export const followAPI = {
@@ -57,6 +50,24 @@ export const profileAPI = {
   setUserProfile(userId) {
     return instance
       .get(`profile/` + userId)
+      .then((response) => {
+        return response.data;
+      });
+  }
+};
+
+export const statusAPI = {
+  getStatus(userId) {
+    return instance
+      .get(`profile/status/` + userId)
+      .then((response) => {
+        return response.data;
+      });
+  },
+  updateStatus(status) {
+    debugger
+    return instance
+      .put(`profile/status`, {status: status})
       .then((response) => {
         return response.data;
       });
