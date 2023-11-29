@@ -1,5 +1,4 @@
 const ADD_MESSAGE = "ADD-MESSAGE";
-const UPDATE_MESSAGE_TEXT = "UPDATE-MESSAGE-TEXT";
 
 let initialState = {
   dialogsData: [
@@ -15,7 +14,6 @@ let initialState = {
     { id: 3, message: "I`m so happy for you!" },
     { id: 4, message: "Today is gonna be a good day." },
   ],
-  newMessageText: "",
 };
 
 const dialogsReducer = (state = initialState, action) => {
@@ -23,27 +21,18 @@ const dialogsReducer = (state = initialState, action) => {
     case ADD_MESSAGE:
       let newMessage = {
         id: 5,
-        message: state.newMessageText,
+        message: action.message,
       };
       return {
         ...state,
         messagesData: [...state.messagesData, newMessage], // вместо метода push сразу при копировании массива добавила туда newMessage
         newMessageText: "",
       };
-    case UPDATE_MESSAGE_TEXT:
-      return {
-        ...state,
-        newMessageText: action.newText2,
-      };
     default:
       return state;
   }
 };
 
-export let addMessageActionCreator = () => ({ type: ADD_MESSAGE });
-export let updateMessageTextActionCreator = (body) => ({
-  type: UPDATE_MESSAGE_TEXT,
-  newText2: body,
-});
+export let addMessageActionCreator = (message) => ({ type: ADD_MESSAGE, message });
 
 export default dialogsReducer;

@@ -1,32 +1,48 @@
+import { reduxForm, Field } from "redux-form";
 import classes from "./login.module.css"
 import { NavLink } from "react-router-dom";
+
+const LoginPage = (props) => {
+  const onSubmit = (formData) => {
+    console.log(formData);
+  }
+  return (
+    <LoginReduxForm onSubmit={onSubmit} />
+  )
+}
 
 const Login = (props) => {
   return (
     <div className={classes.authorizationContainer}>
-      <form className={classes.formAuthorization} action="">
+      <form onSubmit={props.handleSubmit} className={classes.formAuthorization} action="">
         <NavLink to={'/registration'}>
           <p className={classes.formAuthorizationSubtitle}>sign up</p>
         </NavLink>
         <div className={classes.formAuthorizationWrapper}>
           <h1 className={classes.formAuthorizationTitle}>sign in</h1>
-          <input
-              className={classes.formAuthorizationItem}
-              type="text"
-              placeholder="login"
-              id="login"
+          <Field
+            component={'input'}
+            name={'login'}
+            className={classes.formAuthorizationItem}
+            type="text"
+            placeholder="login"
+            id="login"
             />
           <p className={classes.formAuthorizationNotification} id="notification1"></p>
-          <input
-              className={classes.formAuthorizationItem}
-              type="password"
-              placeholder="password"
-              id="password"
-            />
+          <Field
+            component={'input'}
+            name={'password'}
+            className={classes.formAuthorizationItem}
+            type="password"
+            placeholder="password"
+            id="password"
+          />
           <p className={classes.formAuthorizationNotification} id="notification2"></p>
 
           <div className={classes.formAuthorizationAgreement}>
-            <input
+            <Field
+              component={'input'}
+              name={'checkbox'}
               className={classes.formAuthorizationItemCheckbox}
               type="checkbox"
               id="agree"
@@ -48,4 +64,10 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+
+const LoginReduxForm = reduxForm({
+  form: 'login'
+}) (Login)
+
+
+export default LoginPage;

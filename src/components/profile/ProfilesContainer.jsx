@@ -22,7 +22,7 @@ function ProfilesContainer(props) {
           <Profile 
             profile={props.profile} 
             status={props.status} 
-            updateStatusThunkCreator={props.updateStatusThunkCreator} 
+            updateStatusThunkCreator={props.updateStatusThunkCreator}
           />
       </div>
   );

@@ -7,7 +7,11 @@ const ProfileInfo = (props) => {
 
   return (
     <div className={classes.about}>
+      <div className={classes.image}>
         <img className={classes.ava} src={props.profile.photos.small} alt="" />
+        {/* <input type="file" name="AddImage" id="AddImage" accept="image/*" />
+        <button onClick={() => {props.updatePhotoThunkCreator()}}>Save</button> */}
+      </div>
       <div>
         <h1 className={classes.title}>{props.profile.fullName}</h1>
         <ProfileStatus status={props.status} updateStatusThunkCreator={props.updateStatusThunkCreator}/>

@@ -20,37 +20,34 @@ export const usersAPI = {
 
 export const followAPI = {
   followUser(id) {
-    return instance
-      .post(`follow/${id}`)
+    return instance.post(`follow/${id}`)
   },
   unfollowUser(id) {
-    return instance
-      .delete(`follow/${id}`)
+    return instance.delete(`follow/${id}`)
   },
 };
 
 export const authMeAPI = {
   authMe() {
-    return instance
-      .get(`auth/me`)
+    return instance.get(`auth/me`)
   },
 };
 
 export const profileAPI = {
   setUserProfile(userId) {
-    return instance
-      .get(`profile/` + userId)
-  }
+    return instance.get(`profile/` + userId)
+  },
+  // setUserImage(image) {
+  //   return instance.put(`profile/photo`, {image: image})
+  // }
 };
 
 export const statusAPI = {
   getStatus(userId) {
-    return instance
-      .get(`profile/status/` + userId)
+    return instance.get(`profile/status/` + userId)
   },
   updateStatus(status) {
     debugger
-    return instance
-      .put(`profile/status`, {status: status})
+    return instance.put(`profile/status`, {status: status})
   }
 };

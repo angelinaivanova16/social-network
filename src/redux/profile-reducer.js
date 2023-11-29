@@ -1,9 +1,9 @@
 import { profileAPI, statusAPI } from "../api/api";
 
 const ADD_POST = "ADD-POST";
-const UPDATE_POST_TEXT = "UPDATE-POST-TEXT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_USER_STATUS = "SET_USER_STATUS";
+// const SET_USER_PHOTO = "SET_USER_PHOTO";
 
 let initialState = {
   postsData: [
@@ -20,7 +20,6 @@ let initialState = {
       likes: 30,
     },
   ],
-  newPostText: "",
   profile: null,
   status: "",
 };
@@ -31,18 +30,13 @@ const profileReducer = (state = initialState, action) => {
       let newPost = {
         id: 5,
         ava: "/images/kolyaAva.jpg",
-        message: state.newPostText,
+        message: action.post,
         likes: 0,
       };
       return {
         ...state,
         postsData: [...state.postsData, newPost],
         newPostText: "",
-      };
-    case UPDATE_POST_TEXT:
-      return {
-        ...state,
-        newPostText: action.newText,
       };
       case SET_USER_PROFILE:
         return {
@@ -60,19 +54,16 @@ const profileReducer = (state = initialState, action) => {
 };
 
 //action-creators:
-export let addPostActionCreator = () => ({ type: ADD_POST });
-export let updatePostTextActionCreator = (text) => ({
-  type: UPDATE_POST_TEXT,
-  newText: text,
-});
+export let addPostActionCreator = (post) => ({ type: ADD_POST, post });
 export let setUserProfile = (userData) => ({ type: SET_USER_PROFILE, userData});
 export let setUserStatus = (status) => ({type: SET_USER_STATUS, status})
+// export let setUserPhoto = (image) => ({type: SET_USER_PHOTO, image})
 
 //thunk-creators-functions: 
 //(thunk-functions for requests from UI - BLL - DAL)
 //(thunk-creators - родительская функция, которая вернет thunk-функцию, которая будет брать и запоминать 
 // данные у родительской функции, даже когда родит.функция будет уже выполнена - для создания замыкания)
-export let setUserProfileThunkCreator = (userId) => {
+export const setUserProfileThunkCreator = (userId) => {
   return (dispatch) => {
     profileAPI.setUserProfile(userId).then((response) => {
       dispatch(setUserProfile(response.data));
@@ -80,7 +71,7 @@ export let setUserProfileThunkCreator = (userId) => {
   }
 }
 
-export let getStatusThunkCreator = (userId) => {
+export const getStatusThunkCreator = (userId) => {
   return (dispatch) => {
     statusAPI.getStatus(userId).then((response) => {
       dispatch(setUserStatus(response.data));
@@ -88,7 +79,7 @@ export let getStatusThunkCreator = (userId) => {
   }
 }
 
-export let updateStatusThunkCreator = (status) => {
+export const updateStatusThunkCreator = (status) => {
   return (dispatch) => {
     statusAPI.updateStatus(status).then((response) => {
       if (response.data.resultCode === 0) {
@@ -97,5 +88,15 @@ export let updateStatusThunkCreator = (status) => {
   });
   }
 }
+
+// export const updatePhotoThunkCreator = (image) => {
+//   return (dispatch) => {
+//     profileAPI.setUserImage(image).then((response) => {
+//       if (response.data.resultCode === 0) {
+//         dispatch(setUserPhoto(image));
+//       }
+//   });
+//   }
+// }
 
 export default profileReducer;

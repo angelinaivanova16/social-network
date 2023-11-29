@@ -8,7 +8,7 @@ const Profile = (props) => {
       <ProfileInfo 
         profile={props.profile} 
         status={props.status} 
-        updateStatusThunkCreator={props.updateStatusThunkCreator} 
+        updateStatusThunkCreator={props.updateStatusThunkCreator}
       />
       <PostsContainer
         store={props.store}

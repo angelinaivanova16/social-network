@@ -3,6 +3,11 @@
   padding-top: 15px;
 } 
 
+.image {
+  display: flex;
+  flex-direction: column;
+}
+
 .ava {
   width: 150px;
   height: 150px;
