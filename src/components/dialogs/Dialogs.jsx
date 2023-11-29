@@ -3,6 +3,10 @@ import { reduxForm, Field } from "redux-form";
 import classes from "./dialogs.module.css";
 import DialogItem from "./dialogItem/DialogItem";
 import MessageItem from "./messageItem/MessageItem";
+import { Input } from "../common/formsControls/FormsControls";
+import { requiredFields, maxLengthCreator } from "../../utils/validators";
+
+const maxLength10 = maxLengthCreator(10);
 
 const Dialogs = (props) => {
   const onSubmit = (values) => {
@@ -33,8 +37,9 @@ const DialogsForm =(props) => {
   return (
     <form onSubmit={props.handleSubmit} className={classes.newMessage}>
       <Field
-        component='input'        
+        component={Input}        
         name='message'
+        validate={[requiredFields, maxLength10]}
         className={classes.newMessageText}
         type='text'
         placeholder='your message...'

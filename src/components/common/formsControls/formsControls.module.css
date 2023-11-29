@@ -1,0 +1,31 @@
+/* .postField {
+  height: 80px;
+  width: 500px;
+  border: none;
+  background-color: rgb(231, 224, 224);
+  margin-bottom: 20px;
+  border-radius: 5px;
+  font-size: 20px;
+  color: rgb(79, 76, 76);
+}
+.postFormNews::placeholder {
+  padding-left: 20px;
+  font-size: 20px;
+  color: gray;
+} */
+
+.postFieldError {
+  border: solid red 1px;
+  height: 80px;
+  width: 500px;
+  background-color: rgb(231, 224, 224);
+  margin-bottom: 20px;
+  border-radius: 5px;
+  font-size: 20px;
+  color: rgb(79, 76, 76);
+}
+
+.postError {
+  color: red;
+  /* margin: 5px 0 5px 0; */
+}

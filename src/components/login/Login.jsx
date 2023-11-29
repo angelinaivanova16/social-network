@@ -1,6 +1,10 @@
 import { reduxForm, Field } from "redux-form";
 import classes from "./login.module.css"
 import { NavLink } from "react-router-dom";
+import { Input } from "../common/formsControls/FormsControls";
+import { maxLengthCreator, requiredFields } from "../../utils/validators";
+
+const maxLength15 = maxLengthCreator(15);
 
 const LoginPage = (props) => {
   const onSubmit = (formData) => {
@@ -21,8 +25,9 @@ const Login = (props) => {
         <div className={classes.formAuthorizationWrapper}>
           <h1 className={classes.formAuthorizationTitle}>sign in</h1>
           <Field
-            component={'input'}
+            component={Input}
             name={'login'}
+            validate={[requiredFields, maxLength15]}
             className={classes.formAuthorizationItem}
             type="text"
             placeholder="login"
@@ -30,18 +35,18 @@ const Login = (props) => {
             />
           <p className={classes.formAuthorizationNotification} id="notification1"></p>
           <Field
-            component={'input'}
+            component={Input}
             name={'password'}
+            validate={[requiredFields]}
             className={classes.formAuthorizationItem}
             type="password"
             placeholder="password"
             id="password"
           />
-          <p className={classes.formAuthorizationNotification} id="notification2"></p>
 
           <div className={classes.formAuthorizationAgreement}>
             <Field
-              component={'input'}
+              component='input'
               name={'checkbox'}
               className={classes.formAuthorizationItemCheckbox}
               type="checkbox"
@@ -53,7 +58,6 @@ const Login = (props) => {
               </div>
             </label>
           </div>
-          <p className={classes.formAuthorizationNotification} id="notification3"></p>
 
           <button className={classes.formAuthorizationBtn} type="submit" id="b">
           Sign in

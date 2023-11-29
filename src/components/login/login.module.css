@@ -110,11 +110,14 @@
 .formAuthorizationAgreement {
   margin-bottom: 20px;
   margin-top: 15px;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 }
 
 .formAuthorizationAgree {
   font-family: Montserrat-Light;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 13px;
   color: #301411;
   cursor: pointer;

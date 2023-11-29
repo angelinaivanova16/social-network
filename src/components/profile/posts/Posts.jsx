@@ -2,6 +2,10 @@ import React from "react";
 import { reduxForm, Field } from "redux-form";
 import Post from "./post/Post";
 import classes from "./posts.module.css";
+import { maxLengthCreator, requiredFields } from "../../../utils/validators";
+import { Input } from "../../common/formsControls/FormsControls";
+
+const maxLength100 = maxLengthCreator(100);
 
 const Posts = (props) => {
   let postsElements = props.postsData.map((el) => (
@@ -21,14 +25,16 @@ const Posts = (props) => {
 };
 
 const PostsForm = (props) => {
+
   return (
     <form onSubmit={props.handleSubmit}>
       <h2 className={classes.title}>My posts</h2>
       <div className={classes.postFormContent}>
         <Field
-          component='input'
+          component={Input}
           name='post'
-          className={classes.postFormNews}
+          validate={[requiredFields, maxLength100]}
+          className={classes.postField}
           type="text"
           placeholder="your news..."
         />
