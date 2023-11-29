@@ -3,12 +3,14 @@ import classes from "./login.module.css"
 import { NavLink } from "react-router-dom";
 import { Input } from "../common/formsControls/FormsControls";
 import { maxLengthCreator, requiredFields } from "../../utils/validators";
+import { connect } from "react-redux";
+import { loginThunkCreator, logoutThunkCreator } from "../../redux/auth-reducer";
 
-const maxLength15 = maxLengthCreator(15);
+const maxLength50 = maxLengthCreator(50);
 
 const LoginPage = (props) => {
   const onSubmit = (formData) => {
-    console.log(formData);
+    props.loginThunkCreator(formData.login, formData.password, formData.checkbox);
   }
   return (
     <LoginReduxForm onSubmit={onSubmit} />
@@ -27,7 +29,7 @@ const Login = (props) => {
           <Field
             component={Input}
             name={'login'}
-            validate={[requiredFields, maxLength15]}
+            validate={[requiredFields, maxLength50]}
             className={classes.formAuthorizationItem}
             type="text"
             placeholder="login"
@@ -74,4 +76,4 @@ const LoginReduxForm = reduxForm({
 }) (Login)
 
 
-export default LoginPage;
+export default connect (null, {loginThunkCreator, logoutThunkCreator}) (LoginPage);
