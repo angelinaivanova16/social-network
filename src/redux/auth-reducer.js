@@ -15,14 +15,13 @@ const authReducer = (state = initialState, action) => {
         return {
           ...state,
           ...action.payload,
-          isAuth: true
         }
     default:
       return state;
   }
 };
 
-export let setAuthUserData = (id, email, login, isAuth) => ({ type: SET_AUTH_USER_DATA, payload: {id, email, login}, isAuth});
+export let setAuthUserData = (id, email, login, isAuth) => ({ type: SET_AUTH_USER_DATA, payload: {id, email, login, isAuth}});
 
 export const authMeThunkCreator = () => {
   return (dispatch) => {
