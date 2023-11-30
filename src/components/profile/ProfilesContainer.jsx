@@ -9,7 +9,7 @@ import { compose } from "@reduxjs/toolkit";
 function ProfilesContainer(props) {
   let { userId } = useParams();
   if (!userId) {
-    userId = 30247;
+    userId = props.userId;
 }
 
   useEffect(() => {
@@ -31,6 +31,7 @@ function ProfilesContainer(props) {
 const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
   status: state.profilePage.status,
+  userId: state.authPage.id,
 })
 
 export default compose(

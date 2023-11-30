@@ -1,3 +1,4 @@
+import { stopSubmit } from "redux-form";
 import { authMeAPI } from "../api/api";
 
 const SET_AUTH_USER_DATA = "SET_AUTH_USER_DATA";
@@ -39,6 +40,10 @@ export const loginThunkCreator = (email, password, rememberMe) => {
     authMeAPI.login(email, password, rememberMe).then((response) => {
       if(response.data.resultCode === 0) {
         dispatch(authMeThunkCreator())
+      }
+      else {
+        let action = stopSubmit('login', {password: response.data.messages[0]});
+        dispatch(action)
       }
     });
   }
