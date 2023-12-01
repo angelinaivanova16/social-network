@@ -1,5 +1,9 @@
 import "./reset.css";
 import classes from "./App.module.css";
+import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import { connect } from "react-redux";
+import { initializeAppThunkCreator } from "./redux/app-reducer";
 import HeaderContainer from "./components/header/HeaderContainer";
 import Navbar from "./components/navbar/Navbar";
 import ProfilesContainer from "./components/profile/ProfilesContainer"
@@ -9,10 +13,17 @@ import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
 import LoginPage from "./components/login/Login";
 import Registration from "./components/registration/Registrationn";
-import { Routes, Route } from "react-router-dom";
 import UsersContainer from "./components/users/UsersContainer";
 
 const App = (props) => {
+  useEffect(() => {
+    props.initializeAppThunkCreator()
+  });
+
+  if(!props.initialized) {
+    return <img src="/images/preloader.gif" alt="Loading..." />
+  }
+
   return (
     <div className={classes.App}>
       <div className={classes.header}><HeaderContainer store={props.store}/></div>
@@ -72,4 +83,8 @@ const App = (props) => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  initialized: state.appPage.initialized
+})
+
+export default connect(mapStateToProps, {initializeAppThunkCreator})(App);
