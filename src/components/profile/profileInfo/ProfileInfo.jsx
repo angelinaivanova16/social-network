@@ -1,4 +1,4 @@
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import classes from "./profileInfo.module.css";
 
 const ProfileInfo = (props) => {
@@ -14,7 +14,7 @@ const ProfileInfo = (props) => {
       </div>
       <div>
         <h1 className={classes.title}>{props.profile.fullName}</h1>
-        <ProfileStatus status={props.status} updateStatusThunkCreator={props.updateStatusThunkCreator}/>
+        <ProfileStatusWithHooks status={props.status} updateStatusThunkCreator={props.updateStatusThunkCreator}/>
         <p className={classes.text}>About Me: {props.profile.aboutMe}</p>
         <p className={classes.text}>Looking For A Job: {props.profile.lookingForAJobDescription}</p>
         <p className={classes.text}>
