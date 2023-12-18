@@ -8,6 +8,7 @@ import { Input } from "../../common/formsControls/FormsControls";
 const maxLength100 = maxLengthCreator(100);
 
 const Posts = (props) => {
+  console.log("Renderrrrr");
   let postsElements = props.postsData.map((el) => (
     <Post key={el.id} ava={el.ava} postMessage={el.message} likesCount={el.likes} />
   ));

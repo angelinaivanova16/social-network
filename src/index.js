@@ -13,9 +13,8 @@ root.render(
     <React.StrictMode>
       <Provider store={store}>
         {/* <App /> */}
-        <App 
+        <App
         state={store.getState()} 
-        // dispatch={store.dispatch.bind(store)}
          />
       </Provider>
     </React.StrictMode>
