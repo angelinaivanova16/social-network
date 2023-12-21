@@ -1,12 +1,12 @@
 import classes from './post.module.css'
 
-const Post = (props) => {
+const Post = ({ava, postMessage, likesCount}) => {
   return(
     <div className={ classes.post }>
-      <img className={classes.ava} src={props.ava} alt="ava" />
-      <p>{props.postMessage}</p>
+      <img className={classes.ava} src={ava} alt="ava" />
+      <p>{postMessage}</p>
       <div className={ classes.like }></div>
-      <span className={ classes.likes }>{props.likesCount}</span>
+      <span className={ classes.likes }>{likesCount}</span>
     </div>
   )
 }

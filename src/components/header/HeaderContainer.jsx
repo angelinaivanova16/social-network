@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import Header from "./Header";
 import { logoutThunkCreator } from "../../redux/auth-reducer";
 
-const HeaderContainer = (props) => {
+const HeaderContainer = ({isAuth, login, logoutThunkCreator}) => {
   return <div>
-    <Header isAuth={props.isAuth} login={props.login} logout={props.logoutThunkCreator}/>
+    <Header isAuth={isAuth} login={login} logout={logoutThunkCreator}/>
   </div>
 }
 

@@ -1,11 +1,11 @@
 import classes from "./messageItem.module.css";
 
-const MessageItem = (props) => {
+const MessageItem = ({id, message}) => {
   return (
     <div
-      className={(props.id % 2 === 0 ? classes.odd : classes.even)}
+      className={(id % 2 === 0 ? classes.odd : classes.even)}
     >
-      {props.message}
+      {message}
     </div>
   );
 };

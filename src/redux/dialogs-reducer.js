@@ -1,9 +1,9 @@
-const ADD_MESSAGE = "ADD-MESSAGE";
+const ADD_MESSAGE = "dialogs/ADD-MESSAGE";
 
 let initialState = {
   dialogsData: [
     { id: 1, name: "Sveta", avatar: "/images/svetaAva.jpg" },
-    { id: 2, name: "Kolya", avatar: "/images/kolyaAva.jpg" },
+    { id: 2, name: "Roma", avatar: "/images/romaAva.jpg" },
     { id: 3, name: "Victor", avatar: "/images/victorAva.jpg" },
     { id: 4, name: "Masha", avatar: "/images/mashaAva.jpg" },
     { id: 5, name: "Sam", avatar: "/images/samAva.jpg" },

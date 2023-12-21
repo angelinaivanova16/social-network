@@ -8,10 +8,10 @@ import { loginThunkCreator, logoutThunkCreator } from "../../redux/auth-reducer"
 
 const maxLength50 = maxLengthCreator(50);
 
-const Login = (props) => {
+const Login = ({handleSubmit}) => {
   return (
     <div className={classes.authorizationContainer}>
-      <form onSubmit={props.handleSubmit} className={classes.formAuthorization} action="">
+      <form onSubmit={handleSubmit} className={classes.formAuthorization} action="">
         <NavLink to={'/registration'}>
           <p className={classes.formAuthorizationSubtitle}>sign up</p>
         </NavLink>
@@ -67,12 +67,12 @@ const LoginReduxForm = reduxForm({
 }) (Login)
 
 
-const LoginPage = (props) => {
+const LoginPage = ({loginThunkCreator, isAuth}) => {
   const onSubmit = (formData) => {
-    props.loginThunkCreator(formData.login, formData.password, formData.checkbox);
+    loginThunkCreator(formData.login, formData.password, formData.checkbox);
   }
 
-  if (props.isAuth) {
+  if (isAuth) {
     return <Navigate to={"/profile"} />
   }
 

@@ -1,8 +1,8 @@
 import { profileAPI, statusAPI } from "../api/api";
 
-const ADD_POST = "ADD-POST";
-const SET_USER_PROFILE = "SET_USER_PROFILE";
-const SET_USER_STATUS = "SET_USER_STATUS";
+const ADD_POST = "profile/ADD-POST";
+const SET_USER_PROFILE = "profile/SET_USER_PROFILE";
+const SET_USER_STATUS = "profile/SET_USER_STATUS";
 // const SET_USER_PHOTO = "SET_USER_PHOTO";
 
 let initialState = {
@@ -22,6 +22,7 @@ let initialState = {
   ],
   profile: null,
   status: "",
+  newPostText: "",
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -38,16 +39,16 @@ const profileReducer = (state = initialState, action) => {
         postsData: [...state.postsData, newPost],
         newPostText: "",
       };
-      case SET_USER_PROFILE:
-        return {
-          ...state,
-          profile: action.userData
-        };
-      case SET_USER_STATUS:
-        return {
-          ...state,
-          status: action.status
-        };
+    case SET_USER_PROFILE:
+      return {
+        ...state,
+        profile: action.userData,
+      };
+    case SET_USER_STATUS:
+      return {
+        ...state,
+        status: action.status,
+      };
     default:
       return state;
   }
@@ -55,39 +56,46 @@ const profileReducer = (state = initialState, action) => {
 
 //action-creators:
 export let addPostActionCreator = (post) => ({ type: ADD_POST, post });
-export let setUserProfile = (userData) => ({ type: SET_USER_PROFILE, userData});
-export let setUserStatus = (status) => ({type: SET_USER_STATUS, status})
+export let setUserProfile = (userData) => ({
+  type: SET_USER_PROFILE,
+  userData,
+});
+export let setUserStatus = (status) => ({ type: SET_USER_STATUS, status });
 // export let setUserPhoto = (image) => ({type: SET_USER_PHOTO, image})
 
-//thunk-creators-functions: 
+//thunk-creators-functions:
 //(thunk-functions for requests from UI - BLL - DAL)
-//(thunk-creators - родительская функция, которая вернет thunk-функцию, которая будет брать и запоминать 
+//(thunk-creators - родительская функция, которая вернет thunk-функцию, которая будет брать и запоминать
 // данные у родительской функции, даже когда родит.функция будет уже выполнена - для создания замыкания)
-export const setUserProfileThunkCreator = (userId) => {
-  return (dispatch) => {
-    profileAPI.setUserProfile(userId).then((response) => {
-      dispatch(setUserProfile(response.data));
-  });
-  }
-}
+export const setUserProfileThunkCreator = (userId) => async (dispatch) => {
+  let response = await profileAPI.setUserProfile(userId);
+  dispatch(setUserProfile(response.data));
+};
 
-export const getStatusThunkCreator = (userId) => {
-  return (dispatch) => {
-    statusAPI.getStatus(userId).then((response) => {
-      dispatch(setUserStatus(response.data));
-  });
-  }
-}
+export const getStatusThunkCreator = (userId) => async (dispatch) => {
+  let response = await statusAPI.getStatus(userId);
+  dispatch(setUserStatus(response.data));
+};
 
-export const updateStatusThunkCreator = (status) => {
-  return (dispatch) => {
-    statusAPI.updateStatus(status).then((response) => {
-      if (response.data.resultCode === 0) {
-        dispatch(setUserStatus(status));
-      }
-  });
+// Исходный код с .then:
+// export const updateStatusThunkCreator = (status) => {
+//   return (dispatch) => {
+//     statusAPI.updateStatus(status)
+//     .then((response) => {
+//       if (response.data.resultCode === 0) {
+//         dispatch(setUserStatus(status));
+//       }
+//   });
+//   }
+// }
+// Переделала на async await:
+export const updateStatusThunkCreator = (status) => async (dispatch) => {
+  let response = await statusAPI.updateStatus(status); // в response будет сидеть результат, в котором зарезолвится promise
+  if (response.data.resultCode === 0) {
+    // для этой логики нужна переменная response
+    dispatch(setUserStatus(status));
   }
-}
+};
 
 // export const updatePhotoThunkCreator = (image) => {
 //   return (dispatch) => {

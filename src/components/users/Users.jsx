@@ -1,71 +1,41 @@
+import Paginator from "./Paginator";
+import User from "./User";
 import classes from "./users.module.css";
-import { NavLink } from "react-router-dom";
 
-const Users = (props) => {
-  // let pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
-  let pages = [];
-  for (let i = 1; i <= 20; i++) {
-    pages.push(i);
-  }
+const Users = ({
+  totalUsersCount,
+  pageSize,
+  changePage,
+  currentPage,
+  users,
+  followingInProgress,
+  unfollowUserThunkCreator,
+  followUserThunkCreator,
+}) => {
   return (
     <div className={classes.wrapper}>
       <h1 className={classes.usersTitle}>Users</h1>
-      <div>
-        {pages.map((el) => {
-          return (
-            <span
-              onClick={() => {
-                props.changePage(el);
-              }}
-              key={el}
-              className={
-                props.currentPage === el ? classes.selectedPage : classes.page
-              }
-            >{`${el} `}</span>
-          );
-        })}
-      </div>
+      <Paginator
+        changePage={changePage}
+        currentPage={currentPage}
+        totalUsersCount={totalUsersCount}
+        pageSize={pageSize}
+      />
       <div className="users">
         <ul>
           {/* промапим каждого пользователя и создадим li на каждого */}
-          {props.users.map((el) => (
-            <li key={el.id} className={classes.user}>
-              <div className={classes.userAvatar}>
-                {" "}
-                <NavLink to={"/profile/" + el.id} className={classes.link}>
-                  <img
-                    className={classes.ava}
-                    src={
-                      el.photos.small != null
-                        ? el.photos.small
-                        : "/images/userIcon.jpg"
-                    }
-                    alt="ava"
-                  />
-                </NavLink>
-                {el.followed ? (
-                  <button
-                    disabled={props.followingInProgress.some((id) => id === el.id)}
-                    onClick={() => {props.unfollowUserThunkCreator(el.id)}}
-                    className={classes.userBtn}>Unfollow</button>
-                ) : (
-                  <button
-                    disabled={props.followingInProgress.some((id) => id === el.id)}
-                    onClick={() => {props.followUserThunkCreator(el.id)}}
-                    className={classes.userBtn}>Follow</button>
-                )}
-              </div>
-              <div className={classes.userInfo}>
-                <div className={classes.userNameAndStatus}>
-                  <p className={classes.userName}>{el.name}</p>
-                  <p className={classes.userStatus}>{el.status}</p>
-                </div>
-                <div className={classes.userLocation}>
-                  <p className={classes.city}>{"el.location.city"}</p>
-                  <p className={classes.country}>{"el.location.country"}</p>
-                </div>
-              </div>
-            </li>
+          {users.map((el) => (
+            <User
+              key={el.id}
+              photos={el.photos}
+              id={el.id}
+              followed={el.followed}
+              name={el.name}
+              status={el.status}
+              followingInProgress={followingInProgress}
+              unfollowUserThunkCreator={unfollowUserThunkCreator}
+              followUserThunkCreator={followUserThunkCreator}
+            />
           ))}
         </ul>
       </div>

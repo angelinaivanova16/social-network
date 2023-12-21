@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 
 const maxLength15 = maxLengthCreator(15);
 
-const RegistrationPage = (props) => {
+const RegistrationPage = () => {
   const onSubmit = (formData) => {
     console.log(formData);
   }
@@ -15,10 +15,10 @@ const RegistrationPage = (props) => {
   )
 }
 
-const Registration = (props) => {
+const Registration = ({handleSubmit}) => {
   return (
     <div className={classes.authorizationContainer}>
-      <form onSubmit={props.handleSubmit} className={classes.formAuthorization} action="">
+      <form onSubmit={handleSubmit} className={classes.formAuthorization} action="">
         <NavLink to={'/login'}>
           <p className={classes.formAuthorizationSubtitle}>sign in</p>
         </NavLink>

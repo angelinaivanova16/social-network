@@ -7,14 +7,13 @@ import { Input } from "../../common/formsControls/FormsControls";
 
 const maxLength100 = maxLengthCreator(100);
 
-const Posts = (props) => {
-  console.log("Renderrrrr");
-  let postsElements = props.postsData.map((el) => (
+const Posts = ({postsData, addNewPost}) => {
+  let postsElements = postsData.map((el) => (
     <Post key={el.id} ava={el.ava} postMessage={el.message} likesCount={el.likes} />
   ));
 
   const addPost = (values) => {
-    props.addPost(values.post);
+    addNewPost(values.post);
   }
 
   return (
@@ -25,10 +24,10 @@ const Posts = (props) => {
   );
 };
 
-const PostsForm = (props) => {
+const PostsForm = ({handleSubmit}) => {
 
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <h2 className={classes.title}>My posts</h2>
       <div className={classes.postFormContent}>
         <Field

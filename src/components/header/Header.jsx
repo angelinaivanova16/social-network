@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import classes from "./header.module.css";
 
-const Header = (props) => {
+const Header = ({isAuth, login, logout}) => {
   return (
     <header className={classes.header}>
       <div className={classes.logoAndTitle}>
@@ -9,8 +9,8 @@ const Header = (props) => {
         <h1 className={classes.title}>#4Travelers</h1>
       </div>
       <div className={classes.login}>
-        {props.isAuth 
-        ? <div>{props.login} - <button className={classes.btn} onClick={props.logout}>Log out</button></div>
+        {isAuth 
+        ? <div>{login} - <button className={classes.btn} onClick={logout}>Log out</button></div>
         : <NavLink to={"/login"}>Login</NavLink>}
       </div>
     </header>

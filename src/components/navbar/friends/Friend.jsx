@@ -1,10 +1,10 @@
 import classes from "./friend.module.css";
 
-const Friend = (props) => {
+const Friend = ({avatar, name}) => {
   return (
     <div className={classes.card}>
-      <img className={classes.ava} src={props.avatar} alt="ava" />
-      <p  className={classes.name}>{props.name}</p>
+      <img className={classes.ava} src={avatar} alt="ava" />
+      <p  className={classes.name}>{name}</p>
     </div>
   );
 };

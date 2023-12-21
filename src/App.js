@@ -15,26 +15,28 @@ import LoginPage from "./components/login/Login";
 import Registration from "./components/registration/Registrationn";
 import UsersContainer from "./components/users/UsersContainer";
 
-const App = (props) => {
+const App = ({initializeAppThunkCreator, initialized, store, state}) => {
   useEffect(() => {
-    props.initializeAppThunkCreator()
+    initializeAppThunkCreator()
   });
 
-  if(!props.initialized) {
+  if(!initialized) {
     return <img src="/images/preloader.gif" alt="Loading..." />
   }
 
   return (
     <div className={classes.App}>
-      <div className={classes.header}><HeaderContainer store={props.store}/></div>
-      <Navbar friendsData={props.state.sideBar.friendsData} />
+      <div className={classes.header}>
+        <HeaderContainer store={store}/>
+      </div>
+      <Navbar friendsData={state.sideBar.friendsData}/>
       <div className={classes.content}>
         <Routes>
         <Route
             path="/"
             element={
               <ProfilesContainer
-                store={props.store}
+                store={store}
               />
             }
           />
@@ -42,7 +44,7 @@ const App = (props) => {
             path="/profile/*"
             element={
               <ProfilesContainer
-                store={props.store}
+                store={store}
               />
             }
           />
@@ -50,7 +52,7 @@ const App = (props) => {
             path="/profile/:userId?"
             element={
               <ProfilesContainer
-                store={props.store}
+                store={store}
               />
             }
           />
@@ -58,24 +60,24 @@ const App = (props) => {
             path="/dialogs/*"
             element={
               <DialogsContainer
-                store={props.store}
+                store={store}
               />
             }
           />
           <Route path="/news" element={<News />} />
           <Route
             path="/users"
-            element={<UsersContainer store={props.store} />}
+            element={<UsersContainer store={store} />}
           />
           <Route path="/music" element={<Music />} />
           <Route path="/settings" element={<Settings />} />
           <Route
             path="/login"
-            element={<LoginPage store={props.store} />}
+            element={<LoginPage store={store} />}
           />
           <Route
             path="/registration"
-            element={<Registration store={props.store} />}
+            element={<Registration store={store} />}
           />
         </Routes>
       </div>

@@ -8,17 +8,17 @@ import { requiredFields, maxLengthCreator } from "../../utils/validators";
 
 const maxLength10 = maxLengthCreator(10);
 
-const Dialogs = (props) => {
+const Dialogs = ({dialogsData, messagesData, addMessage}) => {
   const onSubmit = (values) => {
     console.log(values.message);
-    props.addMessage(values.message)
+    addMessage(values.message)
   }
 
-  let dialogsElements = props.dialogsData.map((el) => (
+  let dialogsElements = dialogsData.map((el) => (
     <DialogItem key={el.id} name={el.name} id={el.id} avatar={el.avatar} />
   ));
 
-  let messagesElements = props.messagesData.map((el) => (
+  let messagesElements = messagesData.map((el) => (
     <MessageItem key={el.id} message={el.message} id={el.id} />
   ));
 
@@ -33,9 +33,9 @@ const Dialogs = (props) => {
   );
 };
 
-const DialogsForm =(props) => {
+const DialogsForm =({handleSubmit}) => {
   return (
-    <form onSubmit={props.handleSubmit} className={classes.newMessage}>
+    <form onSubmit={handleSubmit} className={classes.newMessage}>
       <Field
         component={Input}        
         name='message'
