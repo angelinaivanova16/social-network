@@ -102,3 +102,18 @@
 .link:hover {
   opacity: 0.7;
 }
+
+.PaginatorBtn {
+  width: 50px;
+  height: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(85, 99, 208);
+  font-size: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.PaginatorBtn:hover {
+  opacity: 0.7;
+}

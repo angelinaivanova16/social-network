@@ -1,9 +1,9 @@
-import Paginator from "./Paginator";
+import Paginator from "../common/paginator/Paginator";
 import User from "./User";
 import classes from "./users.module.css";
 
 const Users = ({
-  totalUsersCount,
+  totalItemsCount,
   pageSize,
   changePage,
   currentPage,
@@ -18,7 +18,7 @@ const Users = ({
       <Paginator
         changePage={changePage}
         currentPage={currentPage}
-        totalUsersCount={totalUsersCount}
+        totalItemsCount={totalItemsCount}
         pageSize={pageSize}
       />
       <div className="users">

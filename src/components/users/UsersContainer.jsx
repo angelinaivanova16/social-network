@@ -27,7 +27,7 @@ class UsersContainer extends React.Component {
           <img src="/images/preloader.gif" alt="Loading..." />
         ) : null}
         <Users
-          totalUsersCount={this.props.totalUsersCount}
+          totalItemsCount={this.props.totalItemsCount}
           pageSize={this.props.pageSize}
           currentPage={this.props.currentPage}
           users={this.props.users}
@@ -45,7 +45,7 @@ let mapStateToProps = (state) => {
   return {
     users: getUsers(state),
     pageSize: getPageSize(state),
-    totalUsersCount: getTotalUsersCount(state),
+    totalItemsCount: getTotalUsersCount(state),
     currentPage: getCurrentPage(state),
     isFetching: getIsFetching(state),
     followingInProgress: getFollowingInProgress(state),

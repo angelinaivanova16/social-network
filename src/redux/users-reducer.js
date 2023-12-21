@@ -11,7 +11,7 @@ const TOGGLE_FOLLOWING_IN_PROGRESS = "users/TOGGLE_FOLLOWING_IN_PROGRESS";
 let initialState = {
   users: [],
   pageSize: 5,
-  totalUsersCount: 0,
+  totalItemsCount: 0,
   currentPage: 1,
   isFetching: false,
   followingInProgress: [],
@@ -47,7 +47,7 @@ const usersReducer = (state = initialState, action) => {
     case SET_TOTAL_USERS_COUNT:
       return {
         ...state,
-        totalUsersCount: action.totalUsersCount,
+        totalItemsCount: action.totalItemsCount,
       };
     case CHANGE_PAGE:
       return {
@@ -75,9 +75,9 @@ const usersReducer = (state = initialState, action) => {
 export let follow = (userId) => ({ type: FOLLOW, userId });
 export let unFollow = (userId) => ({ type: UNFOLLOW, userId });
 export let setUsers = (users) => ({ type: SET_USERS, users });
-export let setTotalUsersCount = (totalUsersCount) => ({
+export let setTotalUsersCount = (totalItemsCount) => ({
   type: SET_TOTAL_USERS_COUNT,
-  totalUsersCount,
+  totalItemsCount,
 });
 export let changePage = (selectedPage) => ({ type: CHANGE_PAGE, selectedPage });
 export let togglePreloader = (isFetching) => ({
