@@ -7,13 +7,16 @@ import { initializeAppThunkCreator } from "./redux/app-reducer";
 import HeaderContainer from "./components/header/HeaderContainer";
 import Navbar from "./components/navbar/Navbar";
 import ProfilesContainer from "./components/profile/ProfilesContainer"
-import DialogsContainer from "./components/dialogs/DialogsContainer";
+// import DialogsContainer from "./components/dialogs/DialogsContainer";
 import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
 import LoginPage from "./components/login/Login";
 import Registration from "./components/registration/Registrationn";
 import UsersContainer from "./components/users/UsersContainer";
+
+import { lazy, Suspense } from "react";
+const DialogsContainer = lazy(() => import('./components/dialogs/DialogsContainer'));
 
 const App = ({initializeAppThunkCreator, initialized, store, state}) => {
   useEffect(() => {
@@ -59,9 +62,11 @@ const App = ({initializeAppThunkCreator, initialized, store, state}) => {
           <Route
             path="/dialogs/*"
             element={
-              <DialogsContainer
-                store={store}
-              />
+              <Suspense fallback={<div>Loading...</div>}>
+                <DialogsContainer
+                  store={store}
+                />
+              </Suspense>
             }
           />
           <Route path="/news" element={<News />} />
