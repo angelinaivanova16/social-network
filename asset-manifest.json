@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/social-network/static/css/main.59e4b436.css",
+    "main.js": "/social-network/static/js/main.dd465daa.js",
+    "static/css/557.7ca8444d.chunk.css": "/social-network/static/css/557.7ca8444d.chunk.css",
+    "static/js/557.5c31567b.chunk.js": "/social-network/static/js/557.5c31567b.chunk.js",
+    "static/js/787.2b0bd88f.chunk.js": "/social-network/static/js/787.2b0bd88f.chunk.js",
+    "static/media/Montserrat-Bold.ttf": "/social-network/static/media/Montserrat-Bold.2c155811b35513d5beaa.ttf",
+    "static/media/Montserrat-Light.ttf": "/social-network/static/media/Montserrat-Light.6fcc9263a21be961d246.ttf",
+    "static/media/Montserrat-Regular.ttf": "/social-network/static/media/Montserrat-Regular.ceb11275ab638627a643.ttf",
+    "static/media/bgLake.jpg": "/social-network/static/media/bgLake.fa90951e7069e4e9f5b5.jpg",
+    "static/media/like.png": "/social-network/static/media/like.50feb26a7377c6d4cd66.png",
+    "index.html": "/social-network/index.html",
+    "static/media/check.svg": "/social-network/static/media/check.8a3063c4d2944d026675.svg",
+    "main.59e4b436.css.map": "/social-network/static/css/main.59e4b436.css.map",
+    "main.dd465daa.js.map": "/social-network/static/js/main.dd465daa.js.map",
+    "557.7ca8444d.chunk.css.map": "/social-network/static/css/557.7ca8444d.chunk.css.map",
+    "557.5c31567b.chunk.js.map": "/social-network/static/js/557.5c31567b.chunk.js.map",
+    "787.2b0bd88f.chunk.js.map": "/social-network/static/js/787.2b0bd88f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.59e4b436.css",
+    "static/js/main.dd465daa.js"
+  ]
+}
