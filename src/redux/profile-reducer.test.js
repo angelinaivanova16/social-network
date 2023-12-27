@@ -11,13 +11,13 @@ it ('length of posts should be incremented', () => {
     postsData: [
       {
         id: 1,
-        ava: "/images/svetaAva.jpg",
+        ava: "/social-network/images/svetaAva.jpg",
         message: "Do not give up, the beginning is always the hardest.",
         likes: 20,
       },
       {
         id: 2,
-        ava: "/images/mashaAva.jpg",
+        ava: "/social-network/images/mashaAva.jpg",
         message: "Hi! Never stop dreaming.",
         likes: 30,
       },

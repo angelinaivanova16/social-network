@@ -6,19 +6,19 @@ let store = {
   _state: {
     profilePage: {
       postsData: [
-        {id: 1, ava: '/images/svetaAva.jpg', message: 'Do not give up, the beginning is always the hardest.', likes: 20},
-        {id: 2, ava: '/images/mashaAva.jpg', message: 'Hi! Never stop dreaming.', likes: 30}
+        {id: 1, ava: '/social-network/images/svetaAva.jpg', message: 'Do not give up, the beginning is always the hardest.', likes: 20},
+        {id: 2, ava: '/social-network/images/mashaAva.jpg', message: 'Hi! Never stop dreaming.', likes: 30}
       ],
       newPostText: '',
     },
   
     dialogsPage: {
       dialogsData: [
-        {id: 1, name: 'Sveta', avatar: '/images/svetaAva.jpg'},
-        {id: 2, name: 'Kolya', avatar: '/images/kolyaAva.jpg'},
-        {id: 3, name: 'Victor', avatar: '/images/victorAva.jpg'},
-        {id: 4, name: 'Masha', avatar: '/images/mashaAva.jpg'},
-        {id: 5, name: 'Sam', avatar: '/images/samAva.jpg'}
+        {id: 1, name: 'Sveta', avatar: '/social-network/images/svetaAva.jpg'},
+        {id: 2, name: 'Kolya', avatar: '/social-network/images/kolyaAva.jpg'},
+        {id: 3, name: 'Victor', avatar: '/social-network/images/victorAva.jpg'},
+        {id: 4, name: 'Masha', avatar: '/social-network/images/mashaAva.jpg'},
+        {id: 5, name: 'Sam', avatar: '/social-network/images/samAva.jpg'}
       ],
       messagesData: [
         {id: 1, message: 'Hi'},
@@ -31,9 +31,9 @@ let store = {
   
     sideBar: {
       friendsData: [
-        {id: 1, name: 'Sveta', avatar: '/images/svetaAva.jpg'},
-        {id: 2, name: 'Kolya', avatar: '/images/kolyaAva.jpg'},
-        {id: 3, name: 'Sam', avatar: '/images/samAva.jpg'}
+        {id: 1, name: 'Sveta', avatar: '/social-network/images/svetaAva.jpg'},
+        {id: 2, name: 'Kolya', avatar: '/social-network/images/kolyaAva.jpg'},
+        {id: 3, name: 'Sam', avatar: '/social-network/images/samAva.jpg'}
       ]
     }
   },

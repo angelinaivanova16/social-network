@@ -24,7 +24,7 @@ class UsersContainer extends React.Component {
     return (
       <>
         {this.props.isFetching ? (
-          <img src="/images/preloader.gif" alt="Loading..." />
+          <img src="/social-network/images/preloader.gif" alt="Loading..." />
         ) : null}
         <Users
           totalItemsCount={this.props.totalItemsCount}

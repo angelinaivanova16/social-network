@@ -3,7 +3,7 @@ import classes from "./profileInfo.module.css";
 
 const ProfileInfo = ({profile, status, updateStatusThunkCreator}) => {
   if(!profile) {
-    return <img src="/images/preloader.gif" alt="Loading..." /> }
+    return <img src="/social-network/images/preloader.gif" alt="Loading..." /> }
 
   return (
     <div className={classes.about}>

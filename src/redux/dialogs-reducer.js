@@ -2,11 +2,11 @@ const ADD_MESSAGE = "dialogs/ADD-MESSAGE";
 
 let initialState = {
   dialogsData: [
-    { id: 1, name: "Sveta", avatar: "/images/svetaAva.jpg" },
-    { id: 2, name: "Roma", avatar: "/images/romaAva.jpg" },
-    { id: 3, name: "Victor", avatar: "/images/victorAva.jpg" },
-    { id: 4, name: "Masha", avatar: "/images/mashaAva.jpg" },
-    { id: 5, name: "Sam", avatar: "/images/samAva.jpg" },
+    { id: 1, name: "Sveta", avatar: "/social-network/images/svetaAva.jpg" },
+    { id: 2, name: "Roma", avatar: "/social-network/images/romaAva.jpg" },
+    { id: 3, name: "Victor", avatar: "/social-network/images/victorAva.jpg" },
+    { id: 4, name: "Masha", avatar: "/social-network/images/mashaAva.jpg" },
+    { id: 5, name: "Sam", avatar: "/social-network/images/samAva.jpg" },
   ],
   messagesData: [
     { id: 1, message: "Hi" },

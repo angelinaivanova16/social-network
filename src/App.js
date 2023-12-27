@@ -24,7 +24,7 @@ const App = ({initializeAppThunkCreator, initialized, store, state}) => {
   });
 
   if(!initialized) {
-    return <img src="/images/preloader.gif" alt="Loading..." />
+    return <img src="/social-network/images/preloader.gif" alt="Loading..." />
   }
 
   return (

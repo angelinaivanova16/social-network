@@ -23,7 +23,7 @@ const User = ({
                 src={
                   photos.small != null
                     ? photos.small
-                    : "/images/userIcon.jpg"
+                    : "/social-network/images/userIcon.jpg"
                 }
                 alt="ava"
               />

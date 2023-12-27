@@ -5,7 +5,7 @@ const Header = ({isAuth, login, logout}) => {
   return (
     <header className={classes.header}>
       <div className={classes.logoAndTitle}>
-        <img className={classes.logo} src="/images/logo.png" alt="logo" />
+        <img className={classes.logo} src='/social-network/images/logo.png' alt="logo" />
         <h1 className={classes.title}>#4Travelers</h1>
       </div>
       <div className={classes.login}>
