@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { initializeAppThunkCreator } from "./redux/app-reducer";
 import HeaderContainer from "./components/header/HeaderContainer";
 import Navbar from "./components/navbar/Navbar";
-import ProfilesContainer from "./components/profile/ProfilesContainer"
+import ProfileWithRedirect from "./components/profile/Profile";
 // import DialogsContainer from "./components/dialogs/DialogsContainer";
 import News from "./components/news/News";
 import Music from "./components/music/Music";
@@ -38,7 +38,7 @@ const App = ({initializeAppThunkCreator, initialized, store, state}) => {
         <Route
             path="/"
             element={
-              <ProfilesContainer
+              <ProfileWithRedirect
                 store={store}
               />
             }
@@ -46,7 +46,7 @@ const App = ({initializeAppThunkCreator, initialized, store, state}) => {
           <Route
             path="/profile/*"
             element={
-              <ProfilesContainer
+              <ProfileWithRedirect
                 store={store}
               />
             }
@@ -54,7 +54,7 @@ const App = ({initializeAppThunkCreator, initialized, store, state}) => {
           <Route
             path="/profile/:userId?"
             element={
-              <ProfilesContainer
+              <ProfileWithRedirect
                 store={store}
               />
             }

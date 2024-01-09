@@ -26,7 +26,7 @@ const dialogsReducer = (state = initialState, action) => {
       return {
         ...state,
         messagesData: [...state.messagesData, newMessage], // вместо метода push сразу при копировании массива добавила туда newMessage
-        newMessageText: "",
+        // newMessageText: "",
       };
     default:
       return state;

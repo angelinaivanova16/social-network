@@ -11,7 +11,7 @@ const maxLength10 = maxLengthCreator(10);
 const Dialogs = ({dialogsData, messagesData, addMessage}) => {
   const onSubmit = (values) => {
     console.log(values.message);
-    addMessage(values.message)
+    addMessage(values.message);
   }
 
   let dialogsElements = dialogsData.map((el) => (

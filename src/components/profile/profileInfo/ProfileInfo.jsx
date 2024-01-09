@@ -1,7 +1,11 @@
+import { useSelector } from "react-redux";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import classes from "./profileInfo.module.css";
 
-const ProfileInfo = ({profile, status, updateStatusThunkCreator}) => {
+const ProfileInfo = () => {
+  const profile = useSelector(state => state.profilePage.profile);
+  const status = useSelector(state => state.profilePage.status);
+
   if(!profile) {
     return <img src="/social-network/images/preloader.gif" alt="Loading..." /> }
 
@@ -9,12 +13,10 @@ const ProfileInfo = ({profile, status, updateStatusThunkCreator}) => {
     <div className={classes.about}>
       <div className={classes.image}>
         <img className={classes.ava} src={profile.photos.small} alt="" />
-        {/* <input type="file" name="AddImage" id="AddImage" accept="image/*" />
-        <button onClick={() => {props.updatePhotoThunkCreator()}}>Save</button> */}
       </div>
       <div>
         <h1 className={classes.title}>{profile.fullName}</h1>
-        <ProfileStatusWithHooks status={status} updateStatusThunkCreator={updateStatusThunkCreator}/>
+        <ProfileStatusWithHooks status={status} />
         <p className={classes.text}>About Me: {profile.aboutMe}</p>
         <p className={classes.text}>Looking For A Job: {profile.lookingForAJobDescription}</p>
         <p className={classes.text}>

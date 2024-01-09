@@ -1,24 +1,29 @@
 import React from "react";
-import { reduxForm, Field } from "redux-form";
-import Post from "./post/Post";
+import { useDispatch, useSelector } from "react-redux";
 import classes from "./posts.module.css";
+import { reduxForm, Field } from "redux-form";
 import { maxLengthCreator, requiredFields } from "../../../utils/validators";
 import { Input } from "../../common/formsControls/FormsControls";
+import Post from "./post/Post";
+import { addPost } from "../../../redux/profile-reducer";
 
 const maxLength100 = maxLengthCreator(100);
 
-const Posts = ({postsData, addNewPost}) => {
+const Posts = () => {
+  const postsData = useSelector(state => state.profilePage.postsData);
+  const dispatch = useDispatch();
+
   let postsElements = postsData.map((el) => (
     <Post key={el.id} ava={el.ava} postMessage={el.message} likesCount={el.likes} />
   ));
 
-  const addPost = (values) => {
-    addNewPost(values.post);
+  const addMyPost = (values) => {
+    dispatch(addPost(values.post))
   }
 
   return (
     <div>
-      <PostsReduxForm onSubmit={addPost} />
+      <PostsReduxForm onSubmit={addMyPost} />
       {postsElements}
     </div>
   );
